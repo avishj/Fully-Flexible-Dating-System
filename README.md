@@ -52,48 +52,39 @@
 
 ### 1) Clone the master branch of FFDS.
 
-
-
 ```
 
 $ git clone https://github.com/CodeChefVIT/FFDS
 
 ```
 
-
-
-### 2) Navigate to the cloned folder
-
-
+### 2) Run NPM Install
 
 ```
 
-$ cd FFDS
+$ npm install
 
 ```
 
+### 3) Run NPM Serve (For Dev Build)
 
-
-
-## Project setup
-```
-npm install
 ```
 
-### Compiles and hot-reloads for development
+$ npm run serve
+
 ```
-npm run serve
+### 4) Run NPM Lint (For Linting Code)
+
 ```
 
-### Compiles and minifies for production
-```
-npm run build
+$ npm run lint
+
 ```
 
-### Lints and fixes files
-```
-npm run lint
+### 5) Run NPM Build (For Production Build)
+
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+$ npm run build
+
+```
