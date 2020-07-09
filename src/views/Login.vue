@@ -18,6 +18,7 @@
                 autocomplete="email"
                 v-model="loginEmail"
                 @change="setEmail($event.target.value)"
+                autofocus
               />
               <div class="error" v-if="!$v.loginEmail.required">Email is required.</div>
               <div class="error" v-if="!$v.loginEmail.pattern">Enter a valid VIT email.</div>
