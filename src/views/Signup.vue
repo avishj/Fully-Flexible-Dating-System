@@ -23,7 +23,7 @@
               autofocus
             />
             <div v-if="$v.form1.regEmail.$dirty">
-              <div class="error" v-if="!$v.form1.regEmail.required">Email is required.</div>
+              <div class="error" v-if="!$v.form1.regEmail.required">Email is a required field.</div>
               <div class="error" v-if="!$v.form1.regEmail.pattern_email">Enter a valid VIT email.</div>
             </div>
             <span class="icon is-small is-left">
@@ -45,7 +45,7 @@
               @input="setPwd($event.target.value)"
             />
             <div v-if="$v.form1.regPwd.$dirty">
-              <div class="error" v-if="!$v.form1.regPwd.required">Password is required.</div>
+              <div class="error" v-if="!$v.form1.regPwd.required">Password is a required field.</div>
               <div
                 class="error"
                 v-if="!$v.form1.regPwd.minLength"
@@ -70,6 +70,10 @@
               @input="setConfPwd($event.target.value)"
             />
             <div v-if="$v.form1.regConfPwd.$dirty">
+              <div
+                class="error"
+                v-if="!$v.form1.regConfPwd.required"
+              >Password Confirmation is a required field.</div>
               <div
                 class="error"
                 v-if="!$v.form1.regConfPwd.sameAs"
@@ -655,6 +659,7 @@ export default {
         minLength: minLength(12)
       },
       regConfPwd: {
+        required,
         sameAs: sameAs("regPwd")
       }
     },
