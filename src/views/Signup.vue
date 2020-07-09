@@ -7,10 +7,7 @@
         class="form-signup column is-10-mobile is-8-tablet is-6-desktop is-4-fullhd is-offset-1-mobile is-offset-2-tablet my-6 px-2"
         @submit.prevent="submit1"
       >
-        <p class="title has-text-primary">¡Holá!, Welcome to FFDS!</p>
-        <br />
-        <p class="title has-text-primary">Let's get you signed up!</p>
-        <br />
+        <p class="title has-text-primary">Let's Set Up Your Account</p>
         <div class="field">
           <label for="regEmail" class="label has-text-primary">VIT Email</label>
           <div class="control has-icons-left">
