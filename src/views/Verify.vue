@@ -27,7 +27,7 @@
           </span>
           <span
             class="has-text-weight-medium is-size-5 has-text-success has-text-centered"
-          >to resend the email</span>
+          >to resend the email!</span>
         </p>
         <br />
         <p class="has-text-weight-medium is-size-5 has-text-success has-text-centered">
