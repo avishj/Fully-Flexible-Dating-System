@@ -16,11 +16,13 @@ export default new Vuex.Store({
           params: params
         })
           .then(({ data, status }) => {
-            if (status === 200 && data.response !== "User not found") {
+            if (status === 200 && data.response === "Login successful") {
               localStorage.setItem("jwt-token", JSON.stringify(data.token));
               resolve(true);
-            } else {
+            } else if (data.response !== "User not found") {
               throw new Error("User Not Found!");
+            } else {
+              throw new Error(data.response);
             }
           })
           .catch(error => {
@@ -73,10 +75,10 @@ export default new Vuex.Store({
           params: params
         })
           .then(({ data, status }) => {
-            if (status === 200 && data.response !== "User not registered") {
+            if (status === 200 && data.response !== "email not verified") {
               resolve(true);
             } else {
-              throw new Error("User Not Registered!");
+              throw new Error("Email Not Registered!");
             }
           })
           .catch(error => {
