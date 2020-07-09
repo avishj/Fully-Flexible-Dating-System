@@ -56,13 +56,14 @@
               <button
                 class="button is-medium is-primary"
                 @click.prevent="login"
-                :disabled="$v.$invalid"
+                :disabled="$v.$invalid || isSubmitted"
                 type="submit"
               >
                 <span>Log In</span>
                 <span class="icon">
                   <i class="fas fa-chevron-right"></i>
                 </span>
+                <VueLoadingButton />
               </button>
             </div>
           </div>
@@ -74,6 +75,7 @@
 
 <script>
 import { required, helpers } from "vuelidate/lib/validators";
+import VueLoadingButton from "vue-loading-button";
 
 const pattern = helpers.regex(
   "pattern",
@@ -84,8 +86,12 @@ export default {
   name: "Login",
   data: () => ({
     loginEmail: "",
-    loginPwd: ""
+    loginPwd: "",
+    isSubmitted: false
   }),
+  components: {
+    VueLoadingButton
+  },
   validations: {
     loginEmail: {
       required,
