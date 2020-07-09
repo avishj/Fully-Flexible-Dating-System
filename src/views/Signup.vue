@@ -22,8 +22,10 @@
               @input="setEmail($event.target.value)"
               autofocus
             />
-            <div class="error" v-if="!$v.form1.regEmail.required">Email is required.</div>
-            <div class="error" v-if="!$v.form1.regEmail.pattern_email">Enter a valid VIT email.</div>
+            <div v-if="$v.regEmail.$dirty">
+              <div class="error" v-if="!$v.form1.regEmail.required">Email is required.</div>
+              <div class="error" v-if="!$v.form1.regEmail.pattern_email">Enter a valid VIT email.</div>
+            </div>
             <span class="icon is-small is-left">
               <i class="fas fa-envelope fa-custom"></i>
             </span>
@@ -42,11 +44,13 @@
               v-model="form1.regPwd"
               @input="setPwd($event.target.value)"
             />
-            <div class="error" v-if="!$v.form1.regPwd.required">Password is required.</div>
-            <div
-              class="error"
-              v-if="!$v.form1.regPwd.minLength"
-            >Password has to be atleast 12 characters.</div>
+            <div v-if="$v.regPwd.$dirty">
+              <div class="error" v-if="!$v.form1.regPwd.required">Password is required.</div>
+              <div
+                class="error"
+                v-if="!$v.form1.regPwd.minLength"
+              >Password has to be atleast 12 characters.</div>
+            </div>
             <span class="icon is-small is-left">
               <i class="fas fa-key fa-custom"></i>
             </span>
@@ -65,10 +69,12 @@
               v-model="form1.regConfPwd"
               @input="setConfPwd($event.target.value)"
             />
-            <div
-              class="error"
-              v-if="!$v.form1.regConfPwd.sameAs"
-            >The password & confirmation password do not match.</div>
+            <div v-if="$v.regConfPwd.$dirty">
+              <div
+                class="error"
+                v-if="!$v.form1.regConfPwd.sameAs"
+              >The password & confirmation password do not match.</div>
+            </div>
             <span class="icon is-small is-left">
               <i class="fas fa-key fa-custom"></i>
             </span>
@@ -115,7 +121,9 @@
               @input="setName($event.target.value)"
               autofocus
             />
-            <div class="error" v-if="!$v.form2.regName.required">Name is required.</div>
+            <div v-if="$v.regName.$dirty">
+              <div class="error" v-if="!$v.form2.regName.required">Name is required.</div>
+            </div>
             <span class="icon is-small is-left">
               <i class="fas fa-user-alt fa-custom"></i>
             </span>
@@ -134,11 +142,13 @@
               v-model="form2.regPhNo"
               @input="setPhNo($event.target.value)"
             />
-            <div class="error" v-if="!$v.form2.regPhNo.required">Phone number is required.</div>
-            <div
-              class="error"
-              v-if="!$v.form2.regPhNo.pattern_phone"
-            >Please enter a valid indian phone number.</div>
+            <div v-if="$v.regPhNo.$dirty">
+              <div class="error" v-if="!$v.form2.regPhNo.required">Phone number is required.</div>
+              <div
+                class="error"
+                v-if="!$v.form2.regPhNo.pattern_phone"
+              >Please enter a valid indian phone number.</div>
+            </div>
             <span class="icon is-small is-left">
               <i class="fas fa-phone-alt fa-custom"></i>
             </span>
@@ -158,7 +168,9 @@
               v-model="form2.regOTP"
               @input="setOTP($event.target.value)"
             />
-            <div class="error" v-if="!$v.form2.regOTP.required">OTP is required.</div>
+            <div v-if="$v.regOTP.$dirty">
+              <div class="error" v-if="!$v.form2.regOTP.required">OTP is required.</div>
+            </div>
           </div>
         </div>
         <div class="field">
@@ -224,11 +236,13 @@
               @input="setDescYourself($event.target.value)"
               autofocus
             />
-            <div class="error" v-if="!$v.form3.regDescYourself.required">This field is required.</div>
-            <div
-              class="error"
-              v-if="!$v.form3.regDescYourself.maxLength"
-            >Maximum 1000 characters allowed.</div>
+            <div v-if="$v.regDescYourself.$dirty">
+              <div class="error" v-if="!$v.form3.regDescYourself.required">This field is required.</div>
+              <div
+                class="error"
+                v-if="!$v.form3.regDescYourself.maxLength"
+              >Maximum 1000 characters allowed.</div>
+            </div>
           </div>
         </div>
         <br />
@@ -245,8 +259,10 @@
               v-model="form3.regExp"
               @input="setExp($event.target.value)"
             />
-            <div class="error" v-if="!$v.form3.regExp.required">This field is required.</div>
-            <div class="error" v-if="!$v.form3.regExp.maxLength">Maximum 1000 characters allowed.</div>
+            <div v-if="$v.regExp.$dirty">
+              <div class="error" v-if="!$v.form3.regExp.required">This field is required.</div>
+              <div class="error" v-if="!$v.form3.regExp.maxLength">Maximum 1000 characters allowed.</div>
+            </div>
           </div>
         </div>
         <br />
@@ -295,7 +311,12 @@
             />
             <label for="regGenderNI">Prefer Not To Say</label>
             <br />
-            <div class="error" v-if="!$v.form3.regGender.required">Gender is required.</div>
+            <div v-if="$v.regGender.$dirty">
+              <div
+                class="error has-text-white has-text-weight-normal"
+                v-if="!$v.form3.regGender.required"
+              >Gender is required.</div>
+            </div>
           </div>
         </div>
         <br />
@@ -319,7 +340,7 @@
               </span>
             </label>
           </div>
-          <div class="error" v-if="!$v.form3.regTT.required">Time Table is required.</div>
+          <!-- <div class="error" v-if="!$v.form3.regTT.required">Time Table is required.</div> -->
           <p class="has-text-grey pt-1by2">
             Not sure how to get your Timetable, click
             <router-link class="link-custom-1" to="/timetable">here&nbsp;</router-link>to

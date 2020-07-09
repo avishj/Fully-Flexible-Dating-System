@@ -42,7 +42,7 @@
                 v-model="loginPwd"
                 @change="setPwd($event.target.value)"
               />
-              <div v-if="$v.loginEmail.$dirty">
+              <div v-if="$v.loginPwd.$dirty">
                 <div class="error" v-if="!$v.loginPwd.required">Password is Required.</div>
               </div>
               <span class="icon is-small is-left">
