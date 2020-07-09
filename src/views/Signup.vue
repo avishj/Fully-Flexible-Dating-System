@@ -782,13 +782,15 @@ export default {
         this.$v.$reset();
         this.is3Submitted = true;
         this.$store
-          .dispatch("register", this.axiosForm1)
+          .dispatch("sendmail", this.axiosSendEmailForm)
           .then(success => {
-            this.$store.dispatch("sendmail", this.axiosSendEmailForm);
+            this.$store.dispatch("register", this.axiosForm1).catch(error => {
+              alert(error);
+            });
             this.$router.push("/verify");
           })
           .catch(error => {
-            alert("Registration Failed: Please check your internet.");
+            alert(error);
           });
       } else {
         alert("Please fill the required fields.");
