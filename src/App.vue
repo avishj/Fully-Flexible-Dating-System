@@ -2,7 +2,11 @@
   <div id="app">
     <ProgressBar size="medium" val="60" color="#ED3B9D" />
     <NavBar v-bind:auth_status="auth_status" />
-    <router-view />
+    <transition name="fade" mode="out-in">
+      <keep-alive>
+        <router-view />
+      </keep-alive>
+    </transition>
     <FAQ />
     <Footer />
   </div>
@@ -36,4 +40,12 @@ export default {
 @import "./assets/css/bulma-collapsible.min.css";
 @import "./assets/css/bulma-divider.min.css";
 @import "./assets/css/style.css";
+.fade-enter-active,
+fade-leave-active {
+  transition: opacity 0.3s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>

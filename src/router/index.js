@@ -9,6 +9,7 @@ import Timetable from "../views/Timetable.vue";
 import Verify from "../views/Verify.vue";
 import ResendVerify from "../views/ResendVerify.vue";
 import P404 from "../views/P404.vue";
+import NProgress from "nprogress";
 
 Vue.use(VueRouter);
 
@@ -77,6 +78,17 @@ const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes
+});
+
+router.beforeResolve((to, from, next) => {
+  if (to.path) {
+    NProgress.start();
+  }
+  next();
+});
+
+router.afterEach(() => {
+  NProgress.done();
 });
 
 router.beforeEach((to, from, next) => {
