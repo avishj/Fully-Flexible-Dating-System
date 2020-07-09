@@ -39,7 +39,7 @@
               <span class="is-size-5 has-text-weight-semibold">
                 &nbsp;Click
                 <router-link class="link-custom-1" to="/timetable" target="_blank">here&nbsp;</router-link>for instructions to download your
-                TimeTable.
+                timetable.
               </span>
             </p>
           </div>
