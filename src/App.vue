@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <progress-bar size="medium" val="60" color="#ED3B9D" />
     <NavBar v-bind:auth_status="auth_status" />
     <router-view />
     <FAQ />

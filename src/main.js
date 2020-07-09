@@ -6,6 +6,7 @@ import store from "./store";
 import LoadScript from 'vue-plugin-load-script';
 import Vuex from 'vuex';
 import Vuelidate from 'vuelidate'
+import ProgresssBar from 'vue-simple-progress';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faPaperclip, faSmile } from '@fortawesome/free-solid-svg-icons'
@@ -41,6 +42,9 @@ Vue.config.productionTip = false;
 
 new Vue({
   el: '#app',
+  components: {
+    ProgresssBar
+  },
   router,
   store,
   render: h => h(App)
