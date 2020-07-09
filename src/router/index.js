@@ -8,6 +8,7 @@ import Profile from "../views/Profile.vue";
 import Timetable from "../views/Timetable.vue";
 import Verify from "../views/Verify.vue";
 import ResendVerify from "../views/ResendVerify.vue";
+import P404 from "../views/P404.vue";
 
 Vue.use(VueRouter);
 
@@ -62,8 +63,8 @@ const routes = [
   },
   {
     path: "/404",
-    name: "404",
-    component: "404",
+    name: "P404",
+    component: P404,
     meta: { requiresAuth: false }
   },
   {
