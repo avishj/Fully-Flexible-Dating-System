@@ -92,6 +92,7 @@
               class="button is-medium is-primary btn-next"
               @click.prevent="submit1"
               type="submit"
+              :disabled="is1Submitted"
             >
               <span>Next</span>
               <span class="icon">
@@ -195,6 +196,7 @@
               class="button is-medium is-primary btn-next"
               @click.prevent="submit2"
               type="submit"
+              :disabled="is2Submitted"
             >
               <span>Next</span>
               <span class="icon">
@@ -354,6 +356,7 @@
               class="button is-medium is-primary btn-submit"
               @click.prevent="submit3"
               type="submit"
+              :disabled="is3Submitted"
             >
               <span>Submit</span>
               <span class="icon">
@@ -635,7 +638,10 @@ export default {
       },
       formComplete1: false,
       formComplete2: false,
-      form2Visible: false
+      form2Visible: false,
+      is1Submitted: false,
+      is2Submitted: false,
+      is3Submitted: false
     };
   },
   validations: {
@@ -749,6 +755,7 @@ export default {
       this.$v.$touch();
       if (!this.$v.form1.$invalid) {
         this.$v.$reset();
+        this.is1Submitted = true;
         console.log("Submitting Form 1");
         this.formComplete1 = true;
         this.form2Visible = true;
@@ -758,6 +765,7 @@ export default {
       this.$v.$touch();
       if (!this.$v.form2.$invalid) {
         this.$v.$reset();
+        this.is2Submitted = true;
         console.log("Submitting Form 2");
         this.formComplete2 = true;
         this.form2Visible = false;
@@ -767,6 +775,7 @@ export default {
       this.$v.$touch();
       if (!this.$v.$invalid) {
         this.$v.$reset();
+        this.is3Submitted = true;
         this.$store
           .dispatch("register", this.axiosForm1)
           .then(success => {
