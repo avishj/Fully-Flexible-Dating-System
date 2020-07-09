@@ -53,10 +53,8 @@ export default new Vuex.Store({
           params: params
         })
           .then(({ data, status }) => {
-            if (status === 200 && data.response !== "User not registered") {
+            if (status === 200) {
               resolve(true);
-            } else {
-              throw new Error("User Not Registered!");
             }
           })
           .catch(error => {
@@ -72,8 +70,10 @@ export default new Vuex.Store({
           params: params
         })
           .then(({ data, status }) => {
-            if (status === 200) {
+            if (status === 200 && data.response !== "User not registered") {
               resolve(true);
+            } else {
+              throw new Error("User Not Registered!");
             }
           })
           .catch(error => {
