@@ -20,8 +20,10 @@
                 @change="setEmail($event.target.value)"
                 autofocus
               />
-              <div class="error" v-if="!$v.loginEmail.required">Email is required.</div>
-              <div class="error" v-if="!$v.loginEmail.pattern">Enter a valid VIT email.</div>
+              <div v-if="$v.loginEmail.$dirty">
+                <div class="error" v-if="!$v.loginEmail.required">Email is required.</div>
+                <div class="error" v-if="!$v.loginEmail.pattern">Enter a valid VIT email.</div>
+              </div>
               <span class="icon is-small is-left">
                 <i class="fas fa-envelope fa-custom"></i>
               </span>
@@ -40,7 +42,9 @@
                 v-model="loginPwd"
                 @change="setPwd($event.target.value)"
               />
-              <div class="error" v-if="!$v.loginPwd.required">Password is Required.</div>
+              <div v-if="$v.loginEmail.$dirty">
+                <div class="error" v-if="!$v.loginPwd.required">Password is Required.</div>
+              </div>
               <span class="icon is-small is-left">
                 <i class="fas fa-key fa-custom"></i>
               </span>
