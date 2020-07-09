@@ -19,10 +19,10 @@ export default new Vuex.Store({
             if (status === 200 && data.response === "Login successful") {
               localStorage.setItem("jwt-token", JSON.stringify(data.token));
               resolve(true);
-            } else if (data.response !== "User not found") {
-              throw new Error("User Not Found!");
+            } else if (data.response === "User not found") {
+              reject(new Error("User Not Found!"), null);
             } else {
-              throw new Error(data.response);
+              reject(new Error(data.response), null);
             }
           })
           .catch(error => {
@@ -41,9 +41,9 @@ export default new Vuex.Store({
             if (status === 200 && data.response === "Registered Successful") {
               resolve(true);
             } else if (data.response === "User already exists") {
-              throw new Error("User is already Registered!");
+              reject(new Error("User is already Registered!"), null);
             } else {
-              throw new Error(data.response);
+              reject(new Error(data.response), null);
             }
           })
           .catch(error => {
