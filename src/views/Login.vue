@@ -135,11 +135,11 @@ export default {
                 this.$router.push("/dashboard");
               })
               .catch(error => {
-                alert("Login Failed: Please check email / password.");
+                alert(error);
               });
           })
           .catch(error => {
-            alert("Email is not verified. Please Verify your Email.");
+            alert(error);
           });
       } else {
         alert("Please fill the required fields.");

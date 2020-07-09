@@ -5,9 +5,7 @@ import Axios from "axios";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {
-
-  },
+  state: {},
   mutations: {},
   actions: {
     login: ({ commit }, params) => {
@@ -18,9 +16,11 @@ export default new Vuex.Store({
           params: params
         })
           .then(({ data, status }) => {
-            if (status === 200) {
-              localStorage.setItem("token", JSON.stringify(data.token));
+            if (status === 200 && data.response !== "User not found") {
+              localStorage.setItem("jwt-token", JSON.stringify(data.token));
               resolve(true);
+            } else {
+              throw new Error("User Not Found!");
             }
           })
           .catch(error => {
@@ -53,8 +53,10 @@ export default new Vuex.Store({
           params: params
         })
           .then(({ data, status }) => {
-            if (status === 200) {
+            if (status === 200 && data.response !== "User not registered") {
               resolve(true);
+            } else {
+              throw new Error("User Not Registered!");
             }
           })
           .catch(error => {
@@ -81,7 +83,7 @@ export default new Vuex.Store({
     },
     UPDATEDETAILS: ({ commit }, payload) => {
       return new Promise((resolve, reject) => {
-        Axios.post('updateDetails', payload)
+        Axios.post("updateDetails", payload)
           .then(({ data, status }) => {
             if (status === 200) {
               resolve(true);
@@ -89,12 +91,12 @@ export default new Vuex.Store({
           })
           .catch(error => {
             reject(error);
-          })
+          });
       });
     },
     SHOWDETAILS: ({ commit }, payload) => {
       return new Promise((resolve, reject) => {
-        Axios.post('updateDetails', payload)
+        Axios.post("updateDetails", payload)
           .then(({ data, status }) => {
             if (status === 200) {
               resolve(true);
@@ -102,9 +104,9 @@ export default new Vuex.Store({
           })
           .catch(error => {
             reject(error);
-          })
+          });
       });
-    },
+    }
   },
   modules: {}
 });
