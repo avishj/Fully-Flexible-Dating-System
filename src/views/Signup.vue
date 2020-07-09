@@ -23,6 +23,7 @@
               autocomplete="email"
               v-model="form1.regEmail"
               @input="setEmail($event.target.value)"
+              autofocus
             />
             <div class="error" v-if="!$v.form1.regEmail.required">Email is required.</div>
             <div class="error" v-if="!$v.form1.regEmail.pattern_email">Enter a valid VIT email.</div>
@@ -115,6 +116,7 @@
               placeholder="Enter your full name"
               v-model="form2.regName"
               @input="setName($event.target.value)"
+              autofocus
             />
             <div class="error" v-if="!$v.form2.regName.required">Name is required.</div>
             <span class="icon is-small is-left">
@@ -223,6 +225,7 @@
               placeholder="Describe Yourself (limit 1000 chars)"
               v-model="form3.regDescYourself"
               @input="setDescYourself($event.target.value)"
+              autofocus
             />
             <div class="error" v-if="!$v.form3.regDescYourself.required">This field is required.</div>
             <div
