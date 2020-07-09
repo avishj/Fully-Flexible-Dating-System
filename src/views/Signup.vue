@@ -748,6 +748,7 @@ export default {
     submit1() {
       this.$v.$touch();
       if (!this.$v.form1.$invalid) {
+        this.$v.$reset();
         console.log("Submitting Form 1");
         this.formComplete1 = true;
         this.form2Visible = true;
@@ -756,6 +757,7 @@ export default {
     submit2() {
       this.$v.$touch();
       if (!this.$v.form2.$invalid) {
+        this.$v.$reset();
         console.log("Submitting Form 2");
         this.formComplete2 = true;
         this.form2Visible = false;
@@ -764,6 +766,7 @@ export default {
     submit3() {
       this.$v.$touch();
       if (!this.$v.$invalid) {
+        this.$v.$reset();
         this.$store
           .dispatch("register", this.axiosForm1)
           .then(success => {
