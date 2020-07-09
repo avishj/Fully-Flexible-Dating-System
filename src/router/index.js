@@ -10,7 +10,9 @@ import Verify from "../views/Verify.vue";
 import ResendVerify from "../views/ResendVerify.vue";
 import P404 from "../views/P404.vue";
 import NProgress from "nprogress";
+import "nprogress/nprogress.css";
 
+NProgress.configure({ showSpinner: false });
 Vue.use(VueRouter);
 
 const routes = [

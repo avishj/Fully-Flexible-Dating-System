@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <!-- <ProgressBar size="medium" val="60" color="#ED3B9D" /> -->
     <NavBar v-bind:auth_status="auth_status" />
     <transition name="fade" mode="out-in">
       <keep-alive>
@@ -16,7 +15,6 @@
 import NavBar from "./components/NavBar.vue";
 import FAQ from "./components/FAQ.vue";
 import Footer from "./components/Footer.vue";
-// import ProgressBar from "vue-simple-progress";
 
 export default {
   name: "app",
@@ -24,7 +22,6 @@ export default {
     NavBar,
     FAQ,
     Footer
-    // ProgressBar
   },
   data() {
     return {
