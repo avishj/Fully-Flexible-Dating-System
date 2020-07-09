@@ -63,7 +63,7 @@
               id="regConfPwd"
               name="regConfPwd"
               class="input has-background-black"
-              type="text"
+              type="password"
               placeholder="Confirm your password"
               autocomplete="new-password"
               v-model="form1.regConfPwd"
@@ -761,7 +761,6 @@ export default {
       if (!this.$v.form1.$invalid) {
         this.$v.$reset();
         this.is1Submitted = true;
-        wait(3000);
         console.log("Submitting Form 1");
         this.formComplete1 = true;
         this.form2Visible = true;
@@ -782,13 +781,18 @@ export default {
       if (!this.$v.$invalid) {
         this.$v.$reset();
         this.is3Submitted = true;
+        //Fix Send Mail API Response Handling
         this.$store
           .dispatch("sendmail", this.axiosSendEmailForm)
           .then(success => {
-            this.$store.dispatch("register", this.axiosForm1).catch(error => {
-              alert(error);
-            });
-            this.$router.push("/verify");
+            this.$store
+              .dispatch("register", this.axiosForm1)
+              .then(success => {
+                this.$router.push("/verify");
+              })
+              .catch(error => {
+                alert(error);
+              });
           })
           .catch(error => {
             alert(error);

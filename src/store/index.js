@@ -36,8 +36,10 @@ export default new Vuex.Store({
           params: params
         })
           .then(({ data, status }) => {
-            if (status === 200) {
+            if (status === 200 && data.response === "Registered Successful") {
               resolve(true);
+            } else {
+              throw new Error(data.response);
             }
           })
           .catch(error => {
@@ -45,6 +47,7 @@ export default new Vuex.Store({
           });
       });
     },
+    //Fix Send Mail API Response
     sendmail: ({ commit }, params) => {
       return new Promise((resolve, reject) => {
         Axios.request("/send", {
