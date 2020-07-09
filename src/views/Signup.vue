@@ -121,6 +121,7 @@
               name="regName"
               class="input has-background-black"
               type="text"
+              autocomplete="name"
               placeholder="Enter your full name"
               v-model="form2.regName"
               @input="setName($event.target.value)"
@@ -783,10 +784,10 @@ export default {
         this.is3Submitted = true;
         //Fix Send Mail API Response Handling
         this.$store
-          .dispatch("sendmail", this.axiosSendEmailForm)
+          .dispatch("register", this.axiosForm1)
           .then(success => {
             this.$store
-              .dispatch("register", this.axiosForm1)
+              .dispatch("sendmail", this.axiosSendEmailForm)
               .then(success => {
                 this.$router.push("/verify");
               })

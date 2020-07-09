@@ -15,12 +15,15 @@ export default new Vuex.Store({
           headers: { "Content-Type": "application/json; charset=utf8" },
           params: params
         })
+          //JSON.stringify(data.token)
           .then(({ data, status }) => {
             if (status === 200 && data.response === "Login successful") {
-              localStorage.setItem("jwt-token", JSON.stringify(data.token));
+              localStorage.setItem("token", "kskqskqkn");
               resolve(true);
             } else if (data.response === "User not found") {
               reject(new Error("User Not Found!"), null);
+            } else if (data.response === "Invalid Password") {
+              reject(new Error("Invalid Password!"), null);
             } else {
               reject(new Error(data.response), null);
             }
@@ -30,6 +33,7 @@ export default new Vuex.Store({
           });
       });
     },
+    // Fix API Not returning an object
     register: ({ commit }, params) => {
       return new Promise((resolve, reject) => {
         Axios.request("/register", {
@@ -38,12 +42,12 @@ export default new Vuex.Store({
           params: params
         })
           .then(({ data, status }) => {
-            if (status === 200 && data.response === "Registered Successful") {
+            if (status === 200 && data === "Registered Successful") {
               resolve(true);
-            } else if (data.response === "User already exists") {
+            } else if (data === "User already exists") {
               reject(new Error("User is already Registered!"), null);
             } else {
-              reject(new Error(data.response), null);
+              reject(new Error(data), null);
             }
           })
           .catch(error => {
@@ -77,10 +81,11 @@ export default new Vuex.Store({
           params: params
         })
           .then(({ data, status }) => {
-            if (status === 200 && data.response !== "email not verified") {
+            console.log(data);
+            if (status === 200 && data !== "email not verified") {
               resolve(true);
             } else {
-              throw new Error("Email Not Registered!");
+              reject(new Error("Email Not Verified!"), null);
             }
           })
           .catch(error => {
