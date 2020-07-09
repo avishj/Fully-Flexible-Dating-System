@@ -22,7 +22,7 @@
             <!-- TODO: Fix link-custom-2 not working. -->
             <router-link
               to="/resend-verify"
-              class="has-text-weight-bold is-size-5 has-text-success has-text-centered link-custom-2"
+              class="has-text-weight-medium is-size-5 has-text-success has-text-centered link-custom-1"
             >here&nbsp;</router-link>
           </span>
           <span

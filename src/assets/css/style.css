@@ -13,7 +13,7 @@ a.link-custom-1 {
 }
 a.link-custom-1:hover, a.link-custom:active {
   border: none;
-  color: burlywood;
+  color: burlywood !important;
   text-decoration: none;
   cursor: pointer;
 }
