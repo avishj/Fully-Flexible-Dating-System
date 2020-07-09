@@ -85,9 +85,9 @@
           </div>
         </div>
         <div class="field has-text-success is-size-5">
-          <span class="has-text-weight-medium">Already Registered?,</span>
+          <span class="has-text-weight-medium">Already Registered?,&nbsp;</span>
           <span>
-            <router-link to="/login" class="has-text-weight-semibold link-custom">&nbsp;Log In</router-link>
+            <router-link to="/login" class="has-text-weight-semibold link-custom">Log In</router-link>
           </span>
         </div>
         <div class="field">
