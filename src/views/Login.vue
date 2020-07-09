@@ -63,7 +63,6 @@
                 <span class="icon">
                   <i class="fas fa-chevron-right"></i>
                 </span>
-                <VueLoadingButton />
               </button>
             </div>
           </div>
@@ -75,7 +74,6 @@
 
 <script>
 import { required, helpers } from "vuelidate/lib/validators";
-import VueLoadingButton from "vue-loading-button";
 
 const pattern = helpers.regex(
   "pattern",
@@ -89,9 +87,6 @@ export default {
     loginPwd: "",
     isSubmitted: false
   }),
-  components: {
-    VueLoadingButton
-  },
   validations: {
     loginEmail: {
       required,
