@@ -61,8 +61,14 @@ const routes = [
     meta: { requiresAuth: false }
   },
   {
+    path: "/404",
+    name: "404",
+    component: "404",
+    meta: { requiresAuth: false }
+  },
+  {
     path: "*",
-    redirect: "/"
+    redirect: "/404"
   }
 ];
 
