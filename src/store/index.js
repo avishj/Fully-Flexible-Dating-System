@@ -40,6 +40,8 @@ export default new Vuex.Store({
           .then(({ data, status }) => {
             if (status === 200 && data.response === "Registered Successful") {
               resolve(true);
+            } else if (data.response === "User already exists") {
+              throw new Error("User is already Registered!");
             } else {
               throw new Error(data.response);
             }
