@@ -96,7 +96,7 @@
               class="button is-medium is-primary btn-next"
               @click.prevent="submit1"
               type="submit"
-              :disabled="is1Submitted"
+              :disabled="$v.form1.$invalid || is1Submitted"
             >
               <span>Next</span>
               <span class="icon">
@@ -200,7 +200,7 @@
               class="button is-medium is-primary btn-next"
               @click.prevent="submit2"
               type="submit"
-              :disabled="is2Submitted"
+              :disabled="$v.form2.$invalid || is2Submitted"
             >
               <span>Next</span>
               <span class="icon">
@@ -360,7 +360,7 @@
               class="button is-medium is-primary btn-submit"
               @click.prevent="submit3"
               type="submit"
-              :disabled="is3Submitted"
+              :disabled="$v.form3.$invalid || is3Submitted"
             >
               <span>Submit</span>
               <span class="icon">
@@ -761,6 +761,7 @@ export default {
       if (!this.$v.form1.$invalid) {
         this.$v.$reset();
         this.is1Submitted = true;
+        wait(3000);
         console.log("Submitting Form 1");
         this.formComplete1 = true;
         this.form2Visible = true;
