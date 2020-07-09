@@ -42,7 +42,7 @@
               :class="(this.$route.path == '/dashboard')?'is-active':''"
             >
               <span class="material-icons">home</span>
-              <span class="is-inline-block">Home</span>
+              <span class="is-inline-block">Dashboard</span>
             </router-link>
           </div>
           <div v-if="!auth_status" class="level-item">

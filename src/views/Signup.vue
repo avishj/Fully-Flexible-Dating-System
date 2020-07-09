@@ -22,7 +22,7 @@
               @input="setEmail($event.target.value)"
               autofocus
             />
-            <div v-if="$v.regEmail.$dirty">
+            <div v-if="$v.form1.regEmail.$dirty">
               <div class="error" v-if="!$v.form1.regEmail.required">Email is required.</div>
               <div class="error" v-if="!$v.form1.regEmail.pattern_email">Enter a valid VIT email.</div>
             </div>
@@ -44,7 +44,7 @@
               v-model="form1.regPwd"
               @input="setPwd($event.target.value)"
             />
-            <div v-if="$v.regPwd.$dirty">
+            <div v-if="$v.form1.regPwd.$dirty">
               <div class="error" v-if="!$v.form1.regPwd.required">Password is required.</div>
               <div
                 class="error"
@@ -69,7 +69,7 @@
               v-model="form1.regConfPwd"
               @input="setConfPwd($event.target.value)"
             />
-            <div v-if="$v.regConfPwd.$dirty">
+            <div v-if="$v.form1.regConfPwd.$dirty">
               <div
                 class="error"
                 v-if="!$v.form1.regConfPwd.sameAs"
@@ -121,7 +121,7 @@
               @input="setName($event.target.value)"
               autofocus
             />
-            <div v-if="$v.regName.$dirty">
+            <div v-if="$v.form2.regName.$dirty">
               <div class="error" v-if="!$v.form2.regName.required">Name is required.</div>
             </div>
             <span class="icon is-small is-left">
@@ -142,7 +142,7 @@
               v-model="form2.regPhNo"
               @input="setPhNo($event.target.value)"
             />
-            <div v-if="$v.regPhNo.$dirty">
+            <div v-if="$v.form2.regPhNo.$dirty">
               <div class="error" v-if="!$v.form2.regPhNo.required">Phone number is required.</div>
               <div
                 class="error"
@@ -168,7 +168,7 @@
               v-model="form2.regOTP"
               @input="setOTP($event.target.value)"
             />
-            <div v-if="$v.regOTP.$dirty">
+            <div v-if="$v.form2.regOTP.$dirty">
               <div class="error" v-if="!$v.form2.regOTP.required">OTP is required.</div>
             </div>
           </div>
@@ -236,7 +236,7 @@
               @input="setDescYourself($event.target.value)"
               autofocus
             />
-            <div v-if="$v.regDescYourself.$dirty">
+            <div v-if="$v.form3.regDescYourself.$dirty">
               <div class="error" v-if="!$v.form3.regDescYourself.required">This field is required.</div>
               <div
                 class="error"
@@ -259,7 +259,7 @@
               v-model="form3.regExp"
               @input="setExp($event.target.value)"
             />
-            <div v-if="$v.regExp.$dirty">
+            <div v-if="$v.form3.regExp.$dirty">
               <div class="error" v-if="!$v.form3.regExp.required">This field is required.</div>
               <div class="error" v-if="!$v.form3.regExp.maxLength">Maximum 1000 characters allowed.</div>
             </div>
@@ -311,7 +311,7 @@
             />
             <label for="regGenderNI">Prefer Not To Say</label>
             <br />
-            <div v-if="$v.regGender.$dirty">
+            <div v-if="$v.form3.regGender.$dirty">
               <div
                 class="error has-text-white has-text-weight-normal"
                 v-if="!$v.form3.regGender.required"
