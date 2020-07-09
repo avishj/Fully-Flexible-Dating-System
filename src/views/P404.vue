@@ -37,10 +37,11 @@ export default {
   font-size: 20vw;
   width: 100%;
   margin: auto;
-  vertical-align: middle;
 }
 .custom-fa {
-  font-size: 18.5vw;
+  font-size: 17vw;
+  /* vertical-align: middle; */
+  line-height: 100%;
 }
 .custom-hr {
   background-color: #f4f4f4;
