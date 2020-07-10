@@ -43,13 +43,13 @@ a.link-custom-1:hover, a.link-custom:active {
   color: inherit;
 }
 .link-custom:hover {
-  border-bottom: 2px dashed #FE0074;
+  border-bottom: 2px solid #FE0074;
 }
 .navbar-link-custom {
-  border-bottom: 3px dotted white;
+  border-bottom: 2px solid white;
 }
 .navbar-link-custom:hover {
-  border-bottom: 3px dotted grey;
+  border-bottom: 2px solid grey;
 }
 .navbar-item-fullwidth {
   width: 100%;

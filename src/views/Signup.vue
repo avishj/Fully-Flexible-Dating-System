@@ -350,7 +350,7 @@
           <!-- <div class="error" v-if="!$v.form3.regTT.required">Time Table is required.</div> -->
           <p class="has-text-grey pt-1by2">
             Not sure how to get your Timetable, click
-            <router-link class="link-custom-1" to="/timetable">here&nbsp;</router-link>to
+            <router-link class="link-custom-1" to="/timetable" target="_blank">here</router-link>&nbsp;to
             learn more.
           </p>
         </div>
