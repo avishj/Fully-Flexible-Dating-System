@@ -10,6 +10,12 @@ import Vuelidate from "vuelidate";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faPaperclip, faSmile } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import VueSocketIO from "vue-socket.io";
+import SocketIO from "socket.io-client";
+
+export const SocketInstance = SocketIO('http://localhost:4113');
+
+Vue.use(VueSocketIO, SocketInstance);
 
 Vue.use(Vuelidate);
 Vue.use(require("vue-moment"));
