@@ -13,7 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import VueSocketIO from "vue-socket.io";
 import SocketIO from "socket.io-client";
 
-export const SocketInstance = SocketIO('http://localhost:4113');
+export const SocketInstance = SocketIO("http://localhost:3000");
 
 Vue.use(VueSocketIO, SocketInstance);
 
