@@ -38,7 +38,8 @@
               </span>
               <span class="is-size-5 has-text-weight-semibold">
                 &nbsp;Click
-                <router-link class="link-custom-1" to="/timetable" target="_blank">here</router-link>&nbsp;for instructions to download your
+                <!-- <router-link class="link-custom-1" to="/timetable" target="_blank">here</router-link> -->
+                <router-link to="/timetable" class="link-custom-1">here</router-link>&nbsp;for instructions to download your
                 timetable.
               </span>
             </p>
