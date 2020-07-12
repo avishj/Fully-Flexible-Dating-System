@@ -362,7 +362,7 @@
               <div
                 class="error has-text-white has-text-weight-normal"
                 v-if="!$v.form3.regGender.required"
-              >Gender is required.</div>
+              >Year of admission is a required field.</div>
             </div>
           </div>
         </div>
@@ -416,7 +416,7 @@
               <div
                 class="error has-text-white has-text-weight-normal"
                 v-if="!$v.form3.regGender.required"
-              >Gender is required.</div>
+              >Gender is a required field.</div>
             </div>
           </div>
         </div>
@@ -731,6 +731,8 @@ export default {
       form3: {
         regDescYourself: "",
         regExp: "",
+        regBranch: undefined,
+        regYear: undefined,
         regGender: undefined,
         regTT: File
       },
@@ -778,6 +780,12 @@ export default {
         required,
         maxLength: maxLength(1000)
       },
+      // regBranch: {
+      //   required
+      // },
+      regYear: {
+        required
+      },
       regGender: {
         required
       },
@@ -800,6 +808,8 @@ export default {
       const params = new URLSearchParams();
       params.append("bio", this.form3.regDescYourself);
       params.append("expectations", this.form3.regExp);
+      params.append("year", this.form3.regYear);
+      // params.append("branch", this.form3.regBranch);
       return params;
     },
     axiosSendEmailForm() {
@@ -841,6 +851,14 @@ export default {
     setExp(value) {
       this.form3.regExp = value;
       this.$v.form3.regExp.$touch();
+    },
+    // setBranch(value) {
+    //   this.form3.regBranch = value;
+    //   this.$v.form3.regBranch.$touch();
+    // },
+    setYear(value) {
+      this.form3.regYear = value;
+      this.$v.form3.regYear.$touch();
     },
     setGender(value) {
       this.form3.regGender = value;
