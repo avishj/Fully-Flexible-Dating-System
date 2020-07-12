@@ -274,11 +274,105 @@
         </div>
         <br />
         <div class="field">
+          <label for="regYear" class="label has-text-primary">Year of Admission to VIT</label>
+          <br />
+          <div class="control has-text-success has-text-weight-semibold">
+            <input
+              class="mr-1 ml-1"
+              type="radio"
+              id="regYear2020"
+              name="regYear"
+              value="2020"
+              v-model="form3.regYear"
+              @input="setYear($event.target.value)"
+            />
+            <label for="regYear2020">2020</label>
+            <input
+              class="mr-1 ml-2"
+              type="radio"
+              id="regYear2019"
+              name="regYear"
+              value="2019"
+              v-model="form3.regYear"
+              @input="setYear($event.target.value)"
+            />
+            <label for="regYear2019">2019</label>
+            <input
+              class="mr-1 ml-2"
+              type="radio"
+              id="regYear2018"
+              name="regYear"
+              value="2018"
+              v-model="form3.regYear"
+              @input="setYear($event.target.value)"
+            />
+            <label for="regYear2018">2018</label>
+            <input
+              class="mr-1 ml-2"
+              type="radio"
+              id="regYear2017"
+              name="regYear"
+              value="2017"
+              v-model="form3.regYear"
+              @input="setYear($event.target.value)"
+            />
+            <label for="regYear2017">2017</label>
+            <input
+              class="mr-1 ml-2"
+              type="radio"
+              id="regYear2016"
+              name="regYear"
+              value="2016"
+              v-model="form3.regYear"
+              @input="setYear($event.target.value)"
+            />
+            <label for="regYear2016">2016</label>
+            <input
+              class="mr-1 ml-2"
+              type="radio"
+              id="regYear2015"
+              name="regYear"
+              value="2015"
+              v-model="form3.regYear"
+              @input="setYear($event.target.value)"
+            />
+            <label for="regYear2015">2015</label>
+            <input
+              class="mr-1 ml-2"
+              type="radio"
+              id="regYear2014"
+              name="regYear"
+              value="2014"
+              v-model="form3.regYear"
+              @input="setYear($event.target.value)"
+            />
+            <label for="regYear2014">2014</label>
+            <input
+              class="mr-1 ml-2"
+              type="radio"
+              id="regYear2013"
+              name="regYear"
+              value="2013"
+              v-model="form3.regYear"
+              @input="setYear($event.target.value)"
+            />
+            <label for="regYear2013">2013</label>
+            <br />
+            <div v-if="$v.form3.regGender.$dirty">
+              <div
+                class="error has-text-white has-text-weight-normal"
+                v-if="!$v.form3.regGender.required"
+              >Gender is required.</div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="field">
           <label for="regGender" class="label has-text-primary">I identify my gender as</label>
           <br />
           <div class="control has-text-success has-text-weight-semibold">
             <input
-              class="mr-1 ml-3"
+              class="mr-1 ml-1"
               type="radio"
               id="regGenderMale"
               name="regGender"
@@ -288,7 +382,7 @@
             />
             <label for="regGenderMale">Male</label>
             <input
-              class="mr-1 ml-3"
+              class="mr-1 ml-2"
               type="radio"
               id="regGenderFemale"
               name="regGender"
@@ -298,7 +392,7 @@
             />
             <label for="regGenderFemale">Female</label>
             <input
-              class="mr-1 ml-3"
+              class="mr-1 ml-2"
               type="radio"
               id="regGenderGQNB"
               name="regGender"
@@ -308,7 +402,7 @@
             />
             <label for="regGenderGQNB">Genderqueer / Non-Binary</label>
             <input
-              class="mr-1 ml-3"
+              class="mr-1 ml-2"
               type="radio"
               id="regGenderNI"
               name="regGender"
