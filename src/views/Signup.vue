@@ -274,6 +274,25 @@
         </div>
         <br />
         <div class="field">
+          <label for="regBranch" class="label has-text-primary">Branch</label>
+          <div class="control">
+            <select
+              name="regBranch"
+              id="regBranch"
+              v-model="form3.regBranch"
+              @input="setBranch($event.target.value)"
+            >
+              <option value="selectYear" disabled default></option>
+              <option
+                v-for="branch in branchList"
+                :key="branch.value"
+                value="branch.value"
+              >{{ branch.name }}</option>
+            </select>
+          </div>
+        </div>
+        <br />
+        <div class="field">
           <label for="regYear" class="label has-text-primary">Year of Admission to VIT</label>
           <br />
           <div class="control has-text-success has-text-weight-semibold">
@@ -751,7 +770,75 @@ export default {
       form2Visible: false,
       is1Submitted: false,
       is2Submitted: false,
-      is3Submitted: false
+      is3Submitted: false,
+      branchList: [
+        "B.Tech - Biotechnology",
+        "B.Tech - Chemical Engineering",
+        "B.Tech - Civil Engineering",
+        "B.Tech - Computer Science and Engineering",
+        "B.Tech - Computer Science and Engineering with specialisation in Bioinformatics",
+        "B.Tech - Computer Science and Engineering with specialisation in Information Security",
+        "B.Tech - Computer Science and Engineering with specialisation in IoT",
+        "B.Tech - Computer Science and Engineering with Business Systems(in collaboration with TCS)",
+        "B.Tech - Computer Science and Engineering with specialisation in Data Science",
+        "B.Tech - Computer Science and Engineering with specialisation in Block Chain Technology",
+        "B.Tech - Electrical and Electronics Engineering",
+        "B.Tech - Electronics and Communication Engineering",
+        "B.Tech - Electronics and Instrumentation Engineering",
+        "B.Tech - Electronics and Communication with specialisation in Biomedical Engineering",
+        "B.Tech - Information Technology",
+        "B.Tech - Mechanical Engineering",
+        "B.Tech - Mechanical with specialisation in Automotive Engineering",
+        "B.Tech - Production and Industrial Engineering",
+        "B.Des. Industrial Design",
+        "B.Arch",
+        "B.Sc. (Hons.) Agriculture",
+        "B.Sc Catering and Hotel Management",
+        "B.Sc Computer Science",
+        "B.Sc (Multimedia & Animation)",
+        "B.Sc. Visual Communication",
+        "B.B.A (Bachelor of Business Administration)",
+        "B.Com (Bachelor of Commerce)",
+        "B.C.A (Bachelor of Computer Applications)",
+        "Integrated M.Tech. Software Engineering",
+        "Integrated M.Tech. CSE in collaboration with Virtusa",
+        "Integrated M.Tech. Computer Science and Engineering with specialisation In Data Science",
+        "Integrated M.Sc. Biotechnology",
+        "Integrated M.Sc. Computational Statistics and Data Analytics",
+        "M.Tech. Automotive Electronics in collaboration with TIFAC-CORE industry partners",
+        "M.Tech - Automotive Engineering",
+        "M.Tech. Biomedical Engineering",
+        "M.Tech. Biotechnology",
+        "M.Tech CAD / CAM",
+        "M.Tech. Communication Engineering",
+        "M.Tech. Computer Science and Engineering",
+        "M.Tech.Construction Technology and Management",
+        "M.Tech. Control and Automation",
+        "M. Tech. Computer Science and Engineering with specialisation in Big Data Analytics",
+        "M. Tech. Computer Science and Engineering with specialisation in Information Security",
+        "M. Tech. Computer Science and Engineering with specialisation in Artificial Intelligence and Machine learning",
+        "M.Tech. Embedded Systems",
+        "M.Tech. IoT and Sensor Systems",
+        "M.Tech. Manufacturing Engineering",
+        "M.Tech. Mechanical with specialisation in Cyber Physical Systems",
+        "M.Tech. Mechatronics",
+        "M.Tech. Nanotechnology",
+        "M.Tech. Power Electronics and Drives",
+        "M.Tech. Structural Engineering",
+        "M.Tech. VLSI Design",
+        "M.Des. (Industrial Design)",
+        "M.C.A. (Master of Computer Applications)",
+        "MBA (Master of Business Administration)",
+        "M.Sc Applied MicroBiology",
+        "M.Sc Biomedical Genetics",
+        "M.Sc Biotechnology",
+        "M.Sc Business Statistics",
+        "M.Sc Chemistry",
+        "M.Sc Data Science",
+        "M.Sc Physics",
+        "Ph.D - Internal Full Time only",
+        "Integrated Ph.D  - Internal Full Time only"
+      ]
     };
   },
   validations: {
