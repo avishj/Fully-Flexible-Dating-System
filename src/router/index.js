@@ -10,7 +10,7 @@ import Verify from "../views/Verify.vue";
 import ResendVerify from "../views/ResendVerify.vue";
 import P404 from "../views/P404.vue";
 import NProgress from "nprogress";
-import "nprogress/nprogress.css";
+import "../custom/nprogress-custom.css";
 
 NProgress.configure({ showSpinner: false });
 
