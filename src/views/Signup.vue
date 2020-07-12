@@ -277,17 +277,14 @@
           <label for="regBranch" class="label has-text-primary">Branch</label>
           <div class="control">
             <select
+              class="select has-background-black"
               name="regBranch"
               id="regBranch"
               v-model="form3.regBranch"
               @input="setBranch($event.target.value)"
             >
-              <option value="selectYear" disabled default></option>
-              <option
-                v-for="branch in branchList"
-                :key="branch.value"
-                value="branch.value"
-              >{{ branch.name }}</option>
+              <option value="selectYear" disabled default>Choose a Branch</option>
+              <option v-for="branch in branchList" :key="branch" value="branch">{{ branch }}</option>
             </select>
           </div>
         </div>

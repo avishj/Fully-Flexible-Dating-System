@@ -35,6 +35,19 @@ a.link-custom-1:hover, a.link-custom:active {
   border-radius: 0px;
   box-shadow: none;
 }
+.select, .select:focus, .select:hover {
+  border: 2px solid #FE0074;
+  border-radius: 3px;
+  box-shadow: none;
+  color: #f0f0f0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  background-image: url("../img/down-arrow.svg");
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: 5px;
+}
 .fa-custom {
   color: #FE0074;
 }
