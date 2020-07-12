@@ -288,7 +288,7 @@
             />
             <label for="regYear2020">2020</label>
             <input
-              class="mr-1 ml-2"
+              class="mr-1 ml-1"
               type="radio"
               id="regYear2019"
               name="regYear"
@@ -298,7 +298,7 @@
             />
             <label for="regYear2019">2019</label>
             <input
-              class="mr-1 ml-2"
+              class="mr-1 ml-1"
               type="radio"
               id="regYear2018"
               name="regYear"
@@ -308,7 +308,7 @@
             />
             <label for="regYear2018">2018</label>
             <input
-              class="mr-1 ml-2"
+              class="mr-1 ml-1"
               type="radio"
               id="regYear2017"
               name="regYear"
@@ -318,7 +318,7 @@
             />
             <label for="regYear2017">2017</label>
             <input
-              class="mr-1 ml-2"
+              class="mr-1 ml-1"
               type="radio"
               id="regYear2016"
               name="regYear"
@@ -328,7 +328,7 @@
             />
             <label for="regYear2016">2016</label>
             <input
-              class="mr-1 ml-2"
+              class="mr-1 ml-1"
               type="radio"
               id="regYear2015"
               name="regYear"
@@ -338,7 +338,7 @@
             />
             <label for="regYear2015">2015</label>
             <input
-              class="mr-1 ml-2"
+              class="mr-1 ml-1"
               type="radio"
               id="regYear2014"
               name="regYear"
@@ -348,7 +348,7 @@
             />
             <label for="regYear2014">2014</label>
             <input
-              class="mr-1 ml-2"
+              class="mr-1 ml-1"
               type="radio"
               id="regYear2013"
               name="regYear"
@@ -357,6 +357,16 @@
               @input="setYear($event.target.value)"
             />
             <label for="regYear2013">2013</label>
+            <!-- <input
+              class="mr-1 ml-1"
+              type="radio"
+              id="regYearNI"
+              name="regYear"
+              value="not-said"
+              v-model="form3.regYear"
+              @input="setYear($event.target.value)"
+            />
+            <label for="regYearNI">Prefer Not To Say</label>-->
             <br />
             <div v-if="$v.form3.regGender.$dirty">
               <div
@@ -382,7 +392,7 @@
             />
             <label for="regGenderMale">Male</label>
             <input
-              class="mr-1 ml-2"
+              class="mr-1 ml-1"
               type="radio"
               id="regGenderFemale"
               name="regGender"
@@ -392,7 +402,7 @@
             />
             <label for="regGenderFemale">Female</label>
             <input
-              class="mr-1 ml-2"
+              class="mr-1 ml-1"
               type="radio"
               id="regGenderGQNB"
               name="regGender"
@@ -402,7 +412,7 @@
             />
             <label for="regGenderGQNB">Genderqueer / Non-Binary</label>
             <input
-              class="mr-1 ml-2"
+              class="mr-1 ml-1"
               type="radio"
               id="regGenderNI"
               name="regGender"
