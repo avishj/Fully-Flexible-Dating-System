@@ -276,7 +276,7 @@
         <div class="field">
           <label for="regGender" class="label has-text-primary">I identify my gender as</label>
           <br />
-          <div class="control has-text-success has-text-weight-semibold p-1">
+          <div class="control has-text-success has-text-weight-semibold">
             <input
               class="mr-1 ml-3"
               type="radio"
@@ -306,7 +306,7 @@
               v-model="form3.regGender"
               @input="setGender($event.target.value)"
             />
-            <label for="regGenderGQNB">Genderqueer/Non-Binary</label>
+            <label for="regGenderGQNB">Genderqueer / Non-Binary</label>
             <input
               class="mr-1 ml-3"
               type="radio"
@@ -328,7 +328,7 @@
         </div>
         <br />
         <div class="field">
-          <div class="file is-primary p-1">
+          <div class="file is-primary">
             <label class="file-label" for="regTT">
               <input
                 id="regTT"
@@ -343,13 +343,13 @@
                 <span class="file-icon">
                   <i class="fas fa-upload"></i>
                 </span>
-                <span class="file-label">Upload your TimeTable</span>
+                <span class="file-label">Upload your Timetable</span>
               </span>
             </label>
           </div>
           <!-- <div class="error" v-if="!$v.form3.regTT.required">Time Table is required.</div> -->
           <p class="has-text-grey pt-1by2">
-            Not sure how to get your Timetable, click&nbsp;
+            Not sure how to get your timetable, click&nbsp;
             <router-link class="link-custom-1" to="/timetable">here</router-link>&nbsp;to learn more.
           </p>
         </div>
