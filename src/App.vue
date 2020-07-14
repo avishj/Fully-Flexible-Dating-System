@@ -31,7 +31,7 @@ export default {
     return {
       auth_status: false,
       osComponentOptions: {
-        resize: "both",
+        resize: "none",
         paddingAbsolute: true,
         scrollbars: {
           autoHide: "never"
