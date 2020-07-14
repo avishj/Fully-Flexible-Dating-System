@@ -60,7 +60,7 @@ export default {
 @import "./assets/css/custom/overlayscrollbars-custom.css";
 .fade-enter-active,
 fade-leave-active {
-  transition: opacity 0.3s;
+  transition: opacity 0.8s;
 }
 .fade-enter,
 .fade-leave-to {
