@@ -35,6 +35,9 @@ export default {
         paddingAbsolute: true,
         scrollbars: {
           autoHide: "never"
+        },
+        overflowBehavior: {
+          x: "none"
         }
       }
       // ops: {

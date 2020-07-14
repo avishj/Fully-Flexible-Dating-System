@@ -11,7 +11,6 @@ import Vuelidate from "vuelidate";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faPaperclip, faSmile } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import "overlayscrollbars/css/OverlayScrollbars.css";
 import { OverlayScrollbarsComponent } from "overlayscrollbars-vue";
 // import VueSocketIO from "vue-socket.io";
 // import SocketIO from "socket.io-client";
