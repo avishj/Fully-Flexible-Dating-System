@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <overlay-scrollbars>
+    <overlay-scrollbars :options="osComponentOptions" style="max-height: 100vh;">
       <NavBar v-bind:auth_status="auth_status" />
       <transition name="fade" mode="out-in">
         <keep-alive>
@@ -17,6 +17,8 @@
 import NavBar from "./components/NavBar.vue";
 import FAQ from "./components/FAQ.vue";
 import Footer from "./components/Footer.vue";
+import OverlayScrollbars from "overlayscrollbars";
+import { OverlayScrollbarsComponent } from "overlayscrollbars-vue";
 
 export default {
   name: "app",
@@ -28,12 +30,19 @@ export default {
   data() {
     return {
       auth_status: false,
-      ops: {
-        vuescroll: {},
-        scrollPanel: {},
-        rail: {},
-        bar: {}
+      osComponentOptions: {
+        resize: "both",
+        paddingAbsolute: true,
+        scrollbars: {
+          autoHide: "never"
+        }
       }
+      // ops: {
+      //   vuescroll: {},
+      //   scrollPanel: {},
+      //   rail: {},
+      //   bar: {}
+      // }
     };
   }
 };
