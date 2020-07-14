@@ -1,13 +1,15 @@
 <template>
   <div id="app">
-    <NavBar v-bind:auth_status="auth_status" />
-    <transition name="fade" mode="out-in">
-      <keep-alive>
-        <router-view />
-      </keep-alive>
-    </transition>
-    <FAQ />
-    <Footer />
+    <overlay-scrollbars>
+      <NavBar v-bind:auth_status="auth_status" />
+      <transition name="fade" mode="out-in">
+        <keep-alive>
+          <router-view />
+        </keep-alive>
+      </transition>
+      <FAQ />
+      <Footer />
+    </overlay-scrollbars>
   </div>
 </template>
 
@@ -25,7 +27,13 @@ export default {
   },
   data() {
     return {
-      auth_status: false
+      auth_status: false,
+      ops: {
+        vuescroll: {},
+        scrollPanel: {},
+        rail: {},
+        bar: {}
+      }
     };
   }
 };
@@ -37,6 +45,7 @@ export default {
 @import "./assets/css/bulma-collapsible.min.css";
 @import "./assets/css/bulma-divider.min.css";
 @import "./assets/css/style.css";
+@import "./assets/css/custom/overlayscrollbars-custom.css";
 .fade-enter-active,
 fade-leave-active {
   transition: opacity 0.3s;

@@ -10,7 +10,7 @@ import Verify from "../views/Verify.vue";
 import ResendVerify from "../views/ResendVerify.vue";
 import P404 from "../views/P404.vue";
 import NProgress from "nprogress";
-import "../custom/nprogress-custom.css";
+import "../assets/css/custom/nprogress-custom.css";
 
 NProgress.configure({ showSpinner: false });
 
@@ -98,23 +98,23 @@ router.afterEach(() => {
   NProgress.done();
 });
 
-router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth)) {
-    // this route requires auth, check if logged in
-    // if not, redirect to login page.
-    // Check if user is authenticated or not
-    // eslint-disable-next-line no-constant-condition
-    if (true) {
-      next({
-        path: "/login",
-        query: { redirect: to.fullPath }
-      });
-    } else {
-      next();
-    }
-  } else {
-    next(); // make sure to always call next()!
-  }
-});
+// router.beforeEach((to, from, next) => {
+//   if (to.matched.some(record => record.meta.requiresAuth)) {
+//     // this route requires auth, check if logged in
+//     // if not, redirect to login page.
+//     // Check if user is authenticated or not
+//     // eslint-disable-next-line no-constant-condition
+//     if (true) {
+//       next({
+//         path: "/login",
+//         query: { redirect: to.fullPath }
+//       });
+//     } else {
+//       next();
+//     }
+//   } else {
+//     next(); // make sure to always call next()!
+//   }
+// });
 
 export default router;

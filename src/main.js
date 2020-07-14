@@ -6,11 +6,13 @@ import store from "./store";
 import LoadScript from "vue-plugin-load-script";
 import Vuex from "vuex";
 import Vuelidate from "vuelidate";
-import vSelect from "vue-select";
-import vuescroll from "vuescroll";
+// import vSelect from "vue-select";
+// import vuescroll from "vuescroll";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faPaperclip, faSmile } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import "overlayscrollbars/css/OverlayScrollbars.css";
+import { OverlayScrollbarsComponent } from "overlayscrollbars-vue";
 // import VueSocketIO from "vue-socket.io";
 // import SocketIO from "socket.io-client";
 
@@ -20,15 +22,17 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 Vue.use(Vuelidate);
 Vue.use(require("vue-moment"));
+Vue.component("overlay-scrollbars", OverlayScrollbarsComponent);
 
 library.add(faPaperclip);
 library.add(faSmile);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
-Vue.component("v-select", vSelect);
-Vue.component("vuescroll", {
-  options: {}
-});
+// Vue.component("v-select", vSelect);
+// Vue.use(vuescroll, {
+//   ops: {},
+//   name: "vueScroll"
+// });
 
 Axios.defaults.baseURL = "https://ffds-new.herokuapp.com/";
 

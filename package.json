@@ -29,6 +29,8 @@
     "jquery-validation": "^1.19.2",
     "node-sass": "^4.14.1",
     "nprogress": "^0.2.0",
+    "overlayscrollbars": "^1.12.0",
+    "overlayscrollbars-vue": "^0.2.2",
     "prettier": "^1.19.1",
     "querystring": "^0.2.0",
     "sass-loader": "^8.0.2",
