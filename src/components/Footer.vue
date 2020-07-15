@@ -8,7 +8,13 @@
         </span>
         <span class="has-text-weight-semibold is-size-4 has-text-white">
           by
-          <a class="link-custom-1" href="https://codechefvit.com" target="_blank">CodeChefVIT.</a>
+          <a class="link-custom-1 is-size-5" href="https://avishj.dev" target="_blank">avishj</a>
+          at
+          <a
+            class="link-custom-1"
+            href="https://codechefvit.com"
+            target="_blank"
+          >CodeChefVIT.</a>
         </span>
         <br class="my-1" />
         <span class="icon is-size-5 has-text-white p-1">
