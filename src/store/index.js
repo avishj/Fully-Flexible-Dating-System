@@ -36,13 +36,13 @@ export default new Vuex.Store({
     // Fix API Not returning an object
     register: ({ commit }, params) => {
       return new Promise((resolve, reject) => {
-        Axios.request("/register", {
+        Axios.request("/user/create", {
           method: "post",
           headers: { "Content-Type": "application/json; charset=utf8" },
           params: params
         })
           .then(({ data, status }) => {
-            if (status === 201 && data === "Registered Successful") {
+            if (status === 201 && data === "Account created successfully") {
               resolve(true);
             } else if (data === "User already exists") {
               reject(new Error("User is already Registered!"), null);
@@ -82,10 +82,21 @@ export default new Vuex.Store({
         })
           .then(({ data, status }) => {
             console.log(data);
-            if (status === 200 && data !== "email not verified") {
+            if (status === 200 && data.message === "email is verified") {
               resolve(true);
-            } else {
+            } else if (
+              status === 200 &&
+              data.message === "User not registered"
+            ) {
+              reject(new Error("User Not Registered!"), null);
+            } else if (
+              status === 200 &&
+              // Fix Email Not Verified Message
+              data.message === "User not registered"
+            ) {
               reject(new Error("Email Not Verified!"), null);
+            } else {
+              reject(new Error(data.message), null);
             }
           })
           .catch(error => {
