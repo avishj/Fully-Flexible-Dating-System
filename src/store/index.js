@@ -42,12 +42,16 @@ export default new Vuex.Store({
           params: params
         })
           .then(({ data, status }) => {
-            if (status === 201 && data === "Account created successfully") {
+            if (
+              status === 201 &&
+              data.message === "Account created successfully"
+            ) {
               resolve(true);
-            } else if (data === "User already exists") {
+              // Fix Register Error Messages
+            } else if (data.message === "User already exists") {
               reject(new Error("User is already Registered!"), null);
             } else {
-              reject(new Error(data), null);
+              reject(new Error(data.message), null);
             }
           })
           .catch(error => {
