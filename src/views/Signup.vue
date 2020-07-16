@@ -284,7 +284,7 @@
               @input="setBranch($event.target.value)"
             >
               <option value="selectYear" disabled default>Choose a Branch</option>
-              <option v-for="branch in branchList" :key="branch" value="branch">{{ branch }}</option>
+              <option v-for="branch in branchList" :key="branch" :value="branch">{{ branch }}</option>
             </select>
             <div v-if="$v.form3.regBranch.$dirty">
               <div class="error" v-if="!$v.form3.regBranch.required">This field is required.</div>
