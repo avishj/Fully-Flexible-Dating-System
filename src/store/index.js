@@ -119,12 +119,33 @@ export default new Vuex.Store({
           });
       });
     },
-    UPDATEDETAILS: ({ commit }, payload) => {
+    updateDetails: ({ commit }, params) => {
       return new Promise((resolve, reject) => {
-        Axios.post("updateDetails", payload)
+        Axios.request("/user/updateDetails", {
+          method: "post",
+          headers: { "Content-Type": "application/json; charset=utf8" },
+          params: params
+        })
           .then(({ data, status }) => {
-            if (status === 200) {
+            console.log(data);
+            if (status === 200 && data.message === "Details Updated") {
               resolve(true);
+            }
+            //Fix Other Error Messages Handling
+            //  else if (
+            //   status === 200 &&
+            //   data.message === "User not registered"
+            // ) {
+            //   reject(new Error("User Not Registered!"), null);
+            // } else if (
+            //   status === 200 &&
+            //   // Fix Email Not Verified Message
+            //   data.message === "User not registered"
+            // ) {
+            //   reject(new Error("Email Not Verified!"), null);
+            // }
+            else {
+              reject(new Error(data.message), null);
             }
           })
           .catch(error => {
