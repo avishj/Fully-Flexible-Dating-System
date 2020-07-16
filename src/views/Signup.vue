@@ -892,13 +892,13 @@ export default {
     }
   },
   computed: {
-    axiosForm1() {
+    axiosFormUserCreate() {
       const params = new URLSearchParams();
-      params.append("email", this.form1.regEmail);
-      params.append("password", this.form1.regPwd);
-      params.append("gender", this.form3.regGender);
-      params.append("phone", this.form2.regPhNo);
       params.append("name", this.form2.regName);
+      params.append("gender", this.form3.regGender);
+      params.append("password", this.form1.regPwd);
+      params.append("email", this.form1.regEmail);
+      params.append("phone", this.form2.regPhNo);
       return params;
     },
     axiosForm2() {
