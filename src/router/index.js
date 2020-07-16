@@ -1,14 +1,5 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-// import Home from "../views/Home.vue";
-// import Login from "../views/Login.vue";
-// import Signup from "../views/Signup.vue";
-// import Dashboard from "../views/Dashboard.vue";
-// import Profile from "../views/Profile.vue";
-// import Timetable from "../views/Timetable.vue";
-// import Verify from "../views/Verify.vue";
-// import ResendVerify from "../views/ResendVerify.vue";
-// import P404 from "../views/P404.vue";
 import NProgress from "nprogress";
 import "../assets/css/custom/nprogress-custom.css";
 
