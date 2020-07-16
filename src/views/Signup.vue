@@ -909,7 +909,7 @@ export default {
       params.append("branch", this.form3.regBranch);
       return params;
     },
-    axiosSendEmailForm() {
+    axiosFormSendEmail() {
       const params = new URLSearchParams();
       params.append("mailto", this.form1.regEmail);
       return params;
@@ -990,12 +990,13 @@ export default {
       if (!this.$v.$invalid) {
         this.$v.$reset();
         this.is3Submitted = true;
+        console.log("Submitting Form 3");
         //Fix Send Mail API Response Handling
         this.$store
-          .dispatch("register", this.axiosForm1)
+          .dispatch("register", this.axiosFormUserCreate)
           .then(success => {
             this.$store
-              .dispatch("sendmail", this.axiosSendEmailForm)
+              .dispatch("sendmail", this.axiosFormSendEmail)
               .then(success => {
                 this.$router.push("/verify");
               })
