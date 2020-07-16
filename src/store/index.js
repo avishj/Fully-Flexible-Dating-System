@@ -55,17 +55,25 @@ export default new Vuex.Store({
           });
       });
     },
-    //Fix Send Mail API Response
     sendmail: ({ commit }, params) => {
       return new Promise((resolve, reject) => {
-        Axios.request("/send", {
+        Axios.request("/user/send/verification/link", {
           method: "post",
           headers: { "Content-Type": "application/json; charset=utf8" },
           params: params
         })
           .then(({ data, status }) => {
-            if (status === 200) {
+            console.log(data);
+            if (status === 200 && data === "sent") {
               resolve(true);
+            } else if (
+              status === 200 &&
+              // Fix Email Not Sent Message
+              data === "User not registered"
+            ) {
+              reject(new Error("Email Could Not Be Sent!"), null);
+            } else {
+              reject(new Error(data), null);
             }
           })
           .catch(error => {
