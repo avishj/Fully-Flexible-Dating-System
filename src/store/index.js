@@ -10,7 +10,7 @@ export default new Vuex.Store({
   actions: {
     login: ({ commit }, params) => {
       return new Promise((resolve, reject) => {
-        Axios.request("/login", {
+        Axios.request("/user/login", {
           method: "post",
           headers: { "Content-Type": "application/json; charset=utf8" },
           params: params
@@ -18,7 +18,7 @@ export default new Vuex.Store({
           //JSON.stringify(data.token)
           .then(({ data, status }) => {
             if (status === 200 && data.response === "Login successful") {
-              localStorage.setItem("token", "kskqskqkn");
+              localStorage.setItem("token", data.token);
               resolve(true);
             } else if (data.response === "User not found") {
               reject(new Error("User Not Found!"), null);
@@ -42,7 +42,7 @@ export default new Vuex.Store({
           params: params
         })
           .then(({ data, status }) => {
-            if (status === 200 && data === "Registered Successful") {
+            if (status === 201 && data === "Registered Successful") {
               resolve(true);
             } else if (data === "User already exists") {
               reject(new Error("User is already Registered!"), null);
@@ -75,7 +75,7 @@ export default new Vuex.Store({
     },
     verifyemail: ({ commit }, params) => {
       return new Promise((resolve, reject) => {
-        Axios.request("/verifyemail", {
+        Axios.request("/user/verifyemail", {
           method: "post",
           headers: { "Content-Type": "application/json; charset=utf8" },
           params: params
