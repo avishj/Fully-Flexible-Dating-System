@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <NavBar v-bind:auth_status="auth_status" />
     <overlay-scrollbars :options="osComponentOptions" style="max-height: 100vh;">
+      <NavBar v-bind:auth_status="auth_status" />
       <transition name="fade" mode="out-in">
         <keep-alive>
           <router-view />
