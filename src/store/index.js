@@ -48,7 +48,10 @@ export default new Vuex.Store({
             ) {
               resolve(true);
               // Fix Register Error Messages
-            } else if (data.message === "User already exists") {
+            } else if (
+              status === 201 &&
+              data.message === "User already exists"
+            ) {
               reject(new Error("User is already Registered!"), null);
             } else {
               reject(new Error(data.message), null);
