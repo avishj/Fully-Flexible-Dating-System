@@ -15,14 +15,14 @@ export default new Vuex.Store({
           headers: { "Content-Type": "application/json; charset=utf8" },
           params: params
         })
-          //JSON.stringify(data.token)
           .then(({ data, status }) => {
-            if (status === 200 && data.response === "Login successful") {
-              localStorage.setItem("token", data.token);
+            if (status === 200 && data.token) {
+              localStorage.setItem("token", JSON.stringify(data.token));
               resolve(true);
-            } else if (data.response === "User not found") {
+              // Fix User Not Found & Invalid Password Text
+            } else if (status === 200 && data.response === "User not found") {
               reject(new Error("User Not Found!"), null);
-            } else if (data.response === "Invalid Password") {
+            } else if (status === 200 && data.response === "Invalid Password") {
               reject(new Error("Invalid Password!"), null);
             } else {
               reject(new Error(data.response), null);
