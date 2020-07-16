@@ -19,7 +19,7 @@
         <br class="my-1" />
         <span class="icon is-size-5 has-text-white p-1">
           <a class="link-custom-1" href="https://www.facebook.com/codechefvit/" target="_blank">
-            <i class="fab fa-facebook-f fa-lg"></i>
+            <i class="fab fa-facebook fa-lg"></i>
           </a>
         </span>
         &emsp;
@@ -54,6 +54,16 @@
             target="_blank"
           >
             <i class="fab fa-linkedin fa-lg"></i>
+          </a>
+        </span>
+        &nbsp;&nbsp;
+        <span class="icon is-size-5 has-text-white p-1">
+          <a
+            class="link-custom-1"
+            href="https://www.youtube.com/channel/UCzFltCrQSB1CKmX440yqTKw"
+            target="_blank"
+          >
+            <i class="fab fa-youtube fa-lg"></i>
           </a>
         </span>
       </div>
