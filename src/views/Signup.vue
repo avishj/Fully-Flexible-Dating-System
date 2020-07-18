@@ -160,6 +160,59 @@
             </span>
           </div>
         </div>
+        <div class="field">
+          <label for="regGender" class="label has-text-primary">I identify my gender as</label>
+          <br />
+          <div class="control has-text-success has-text-weight-semibold">
+            <input
+              class="mr-1 ml-1"
+              type="radio"
+              id="regGenderMale"
+              name="regGender"
+              value="male"
+              v-model="form2.regGender"
+              @input="setGender($event.target.value)"
+            />
+            <label for="regGenderMale">Male</label>
+            <input
+              class="mr-1 ml-1"
+              type="radio"
+              id="regGenderFemale"
+              name="regGender"
+              value="female"
+              v-model="form2.regGender"
+              @input="setGender($event.target.value)"
+            />
+            <label for="regGenderFemale">Female</label>
+            <input
+              class="mr-1 ml-1"
+              type="radio"
+              id="regGenderGQNB"
+              name="regGender"
+              value="genderqueer-nonbinary"
+              v-model="form2.regGender"
+              @input="setGender($event.target.value)"
+            />
+            <label for="regGenderGQNB">Genderqueer / Non-Binary</label>
+            <input
+              class="mr-1 ml-1"
+              type="radio"
+              id="regGenderNI"
+              name="regGender"
+              value="not-said"
+              v-model="form2.regGender"
+              @input="setGender($event.target.value)"
+            />
+            <label for="regGenderNI">Prefer Not To Say</label>
+            <br />
+            <div v-if="$v.form2.regGender.$dirty">
+              <div
+                class="error has-text-white has-text-weight-normal"
+                v-if="!$v.form2.regGender.required"
+              >Gender is a required field.</div>
+            </div>
+          </div>
+        </div>
         <!-- TODO: Separate OTP into Dashes
         <div class="field is-hidden">
           <label for="regOTP" class="label has-text-primary">OTP</label>
@@ -392,60 +445,6 @@
                 class="error has-text-white has-text-weight-normal"
                 v-if="!$v.form3.regGender.required"
               >Year of admission is a required field.</div>
-            </div>
-          </div>
-        </div>
-        <br />
-        <div class="field">
-          <label for="regGender" class="label has-text-primary">I identify my gender as</label>
-          <br />
-          <div class="control has-text-success has-text-weight-semibold">
-            <input
-              class="mr-1 ml-1"
-              type="radio"
-              id="regGenderMale"
-              name="regGender"
-              value="male"
-              v-model="form3.regGender"
-              @input="setGender($event.target.value)"
-            />
-            <label for="regGenderMale">Male</label>
-            <input
-              class="mr-1 ml-1"
-              type="radio"
-              id="regGenderFemale"
-              name="regGender"
-              value="female"
-              v-model="form3.regGender"
-              @input="setGender($event.target.value)"
-            />
-            <label for="regGenderFemale">Female</label>
-            <input
-              class="mr-1 ml-1"
-              type="radio"
-              id="regGenderGQNB"
-              name="regGender"
-              value="genderqueer-nonbinary"
-              v-model="form3.regGender"
-              @input="setGender($event.target.value)"
-            />
-            <label for="regGenderGQNB">Genderqueer / Non-Binary</label>
-            <input
-              class="mr-1 ml-1"
-              type="radio"
-              id="regGenderNI"
-              name="regGender"
-              value="not-said"
-              v-model="form3.regGender"
-              @input="setGender($event.target.value)"
-            />
-            <label for="regGenderNI">Prefer Not To Say</label>
-            <br />
-            <div v-if="$v.form3.regGender.$dirty">
-              <div
-                class="error has-text-white has-text-weight-normal"
-                v-if="!$v.form3.regGender.required"
-              >Gender is a required field.</div>
             </div>
           </div>
         </div>
@@ -755,14 +754,14 @@ export default {
       form2: {
         regName: "",
         regPhNo: Number,
-        regOTP: Number
+        // regOTP: Number,
+        regGender: undefined
       },
       form3: {
         regDescYourself: "",
         regExp: "",
         regBranch: undefined,
         regYear: undefined,
-        regGender: undefined,
         regTT: File
       },
       formComplete1: false,
@@ -864,7 +863,10 @@ export default {
         required,
         pattern_phone
       },
-      regOTP: {
+      // regOTP: {
+      //   required
+      // },
+      regGender: {
         required
       }
     },
@@ -877,13 +879,10 @@ export default {
         required,
         maxLength: maxLength(1000)
       },
-      regBranch: {
-        required
-      },
       regYear: {
         required
       },
-      regGender: {
+      regBranch: {
         required
       },
       regTT: {
@@ -895,7 +894,7 @@ export default {
     axiosFormUserCreate() {
       const params = new URLSearchParams();
       params.append("name", this.form2.regName);
-      params.append("gender", this.form3.regGender);
+      params.append("gender", this.form2.regGender);
       params.append("password", this.form1.regPwd);
       params.append("email", this.form1.regEmail);
       params.append("phone", this.form2.regPhNo);
@@ -958,8 +957,8 @@ export default {
       this.$v.form3.regYear.$touch();
     },
     setGender(value) {
-      this.form3.regGender = value;
-      this.$v.form3.regGender.$touch();
+      this.form2.regGender = value;
+      this.$v.form2.regGender.$touch();
     },
     setTT(value) {
       this.form3.regTT = value;
