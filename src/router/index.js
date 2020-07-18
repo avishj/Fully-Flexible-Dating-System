@@ -62,6 +62,12 @@ const routes = [
     meta: { requiresAuth: false }
   },
   {
+    path: "/first",
+    name: "First",
+    component: loadView("First"),
+    meta: { requiresAuth: true }
+  },
+  {
     path: "/404",
     name: "P404",
     component: loadView("P404"),
