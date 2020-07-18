@@ -162,9 +162,18 @@
         </div>
         <div class="field">
           <label for="regGender" class="label has-text-primary">I identify my gender as</label>
-          <br />
           <div class="control has-text-success has-text-weight-semibold">
-            <input
+            <select
+              class="select has-text-white has-background-black"
+              name="regGender"
+              id="regGender"
+              v-model="form2.regGender"
+              @input="setGender($event.target.value)"
+            >
+              <option value="selectGender" disabled default>Choose a Gender</option>
+              <option :key="gender" :value="gender" v-for="gender in genderList">{{ gender }}</option>
+            </select>
+            <!-- <input
               class="mr-1 ml-1"
               type="radio"
               id="regGenderMale"
@@ -203,7 +212,7 @@
               v-model="form2.regGender"
               @input="setGender($event.target.value)"
             />
-            <label for="regGenderNI">Prefer Not To Say</label>
+            <label for="regGenderNI">Prefer Not To Say</label>-->
             <br />
             <div v-if="$v.form2.regGender.$dirty">
               <div
@@ -330,7 +339,7 @@
           <label for="regBranch" class="label has-text-primary">Branch</label>
           <div class="control">
             <select
-              class="select has-background-black"
+              class="select has-text-white has-background-black"
               name="regBranch"
               id="regBranch"
               v-model="form3.regBranch"
@@ -440,10 +449,10 @@
             />
             <label for="regYearNI">Prefer Not To Say</label>-->
             <br />
-            <div v-if="$v.form3.regGender.$dirty">
+            <div v-if="$v.form3.regYear.$dirty">
               <div
                 class="error has-text-white has-text-weight-normal"
-                v-if="!$v.form3.regGender.required"
+                v-if="!$v.form3.regYear.required"
               >Year of admission is a required field.</div>
             </div>
           </div>
@@ -770,6 +779,12 @@ export default {
       is1Submitted: false,
       is2Submitted: false,
       is3Submitted: false,
+      genderList: [
+        "Male",
+        "Female",
+        "Genderqueer / Non-Binary",
+        "Prefer Not To Say"
+      ],
       branchList: [
         "B.Tech - Biotechnology",
         "B.Tech - Chemical Engineering",
