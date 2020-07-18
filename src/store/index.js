@@ -123,7 +123,10 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         Axios.request("/user/updateDetails", {
           method: "post",
-          headers: { "Content-Type": "application/json; charset=utf8" },
+          headers: {
+            "Content-Type": "application/json; charset=utf8",
+            "Authorization": "JWT " + localStorage.getItem("token")
+          },
           params: params
         })
           .then(({ data, status }) => {
