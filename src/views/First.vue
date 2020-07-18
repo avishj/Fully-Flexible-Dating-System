@@ -3,7 +3,7 @@
     <div class="columns">
       <form
         id="profileForm"
-        class="form-signup column is-10-mobile is-8-tablet is-offset-1-mobile is-offset-2-tablet my-6 px-2"
+        class="form-signup column is-10-mobile is-8-tablet is-6-desktop is-offset-1-mobile is-offset-2-tablet is-offset-3-desktop my-6 px-2"
         @submit.prevent="submit"
       >
         <div class="field is-flex is-horizontal-center">

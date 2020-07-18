@@ -173,46 +173,6 @@
               <option value="selectGender" disabled default>Choose a Gender</option>
               <option :key="gender" :value="gender" v-for="gender in genderList">{{ gender }}</option>
             </select>
-            <!-- <input
-              class="mr-1 ml-1"
-              type="radio"
-              id="regGenderMale"
-              name="regGender"
-              value="male"
-              v-model="form2.regGender"
-              @input="setGender($event.target.value)"
-            />
-            <label for="regGenderMale">Male</label>
-            <input
-              class="mr-1 ml-1"
-              type="radio"
-              id="regGenderFemale"
-              name="regGender"
-              value="female"
-              v-model="form2.regGender"
-              @input="setGender($event.target.value)"
-            />
-            <label for="regGenderFemale">Female</label>
-            <input
-              class="mr-1 ml-1"
-              type="radio"
-              id="regGenderGQNB"
-              name="regGender"
-              value="genderqueer-nonbinary"
-              v-model="form2.regGender"
-              @input="setGender($event.target.value)"
-            />
-            <label for="regGenderGQNB">Genderqueer / Non-Binary</label>
-            <input
-              class="mr-1 ml-1"
-              type="radio"
-              id="regGenderNI"
-              name="regGender"
-              value="not-said"
-              v-model="form2.regGender"
-              @input="setGender($event.target.value)"
-            />
-            <label for="regGenderNI">Prefer Not To Say</label>-->
             <br />
             <div v-if="$v.form2.regGender.$dirty">
               <div
@@ -265,7 +225,7 @@
               type="submit"
               :disabled="$v.form2.$invalid || is2Submitted"
             >
-              <span>Next</span>
+              <span>Create Account</span>
               <span class="icon">
                 <i class="fas fa-chevron-right"></i>
               </span>
@@ -455,33 +415,30 @@ export default {
         this.is2Submitted = true;
         console.log("Submitting Form 2");
         this.formComplete2 = true;
-        this.form2Visible = false;
-      }
-    },
-    submit3() {
-      this.$v.$touch();
-      if (!this.$v.$invalid) {
-        this.$v.$reset();
-        this.is3Submitted = true;
-        console.log("Submitting Form 3");
-        //Fix Send Mail API Response Handling
-        this.$store
-          .dispatch("register", this.axiosFormUserCreate)
-          .then(success => {
-            this.$store
-              .dispatch("sendmail", this.axiosFormSendEmail)
-              .then(success => {
-                this.$router.push("/verify");
-              })
-              .catch(error => {
-                alert(error);
-              });
-          })
-          .catch(error => {
-            alert(error);
-          });
-      } else {
-        alert("Please fill the required fields.");
+        this.$v.$touch();
+        if (!this.$v.$invalid) {
+          this.$v.$reset();
+          this.is3Submitted = true;
+          console.log("Submitting Form 3");
+          //Fix Send Mail API Response Handling
+          this.$store
+            .dispatch("register", this.axiosFormUserCreate)
+            .then(success => {
+              this.$store
+                .dispatch("sendmail", this.axiosFormSendEmail)
+                .then(success => {
+                  this.$router.push("/verify");
+                })
+                .catch(error => {
+                  alert(error);
+                });
+            })
+            .catch(error => {
+              alert(error);
+            });
+        } else {
+          alert("Please fill the required fields.");
+        }
       }
     }
   }
