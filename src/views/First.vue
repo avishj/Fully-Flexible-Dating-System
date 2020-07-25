@@ -423,7 +423,23 @@ export default {
               )
               .then(success => {
                 console.log("User Image Added!");
-                this.$router.push("/dashboard");
+                this.$store
+                  .dispatch("uploadTimeTable", this.axiosFormTimeTable)
+                  .then(success => {
+                    console.log("Time Table Uploaded!");
+                    this.$store
+                      .dispatch("getSlotType")
+                      .then(success => {
+                        console.log("Slot Type Analysed!");
+                        this.$router.push("/dashboard");
+                      })
+                      .catch(error => {
+                        alert(error);
+                      });
+                  })
+                  .catch(error => {
+                    alert(error);
+                  });
               })
               .catch(error => {
                 alert(error);
