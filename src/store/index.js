@@ -71,7 +71,6 @@ export default new Vuex.Store({
           });
       });
     },
-    // Fix Register 
     register: ({ commit }, params) => {
       return new Promise((resolve, reject) => {
         Axios.request("/user/create", {
@@ -81,22 +80,16 @@ export default new Vuex.Store({
         })
           .then(({ data, status }) => {
             if (
-              status === 201 ||
+              status === 201 &&
               data.message === "Account created successfully"
             ) {
               resolve(true);
-              // Fix Register Error Messages
-            } else if (
-              status === 401 ||
-              data.message === "User already exists"
-            ) {
-              reject(new Error("User is already Registered!"), null);
-            } else {
-              reject(new Error(data.message), null);
             }
           })
           .catch(error => {
-            reject(error);
+            if (error.response.status === 401)
+              reject(new Error("User is already Registered!"), null);
+            else reject(error);
           });
       });
     },
