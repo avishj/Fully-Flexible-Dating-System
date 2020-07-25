@@ -369,6 +369,14 @@ export default {
       var data = new FormData();
       data.append("inputFile", this.regImg);
       return data;
+    },
+    axiosFormTimeTable() {
+      var data = new FormData();
+      data.set("name", this.regName);
+      // Remove Semester Hard Coding
+      data.set("semester", "1");
+      data.append("file", this.regImg);
+      return data;
     }
   },
   methods: {
