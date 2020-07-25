@@ -52,7 +52,7 @@
               class="input has-background-black"
               type="text"
               maxlength="1000"
-              placeholder="What are your expectations from your matches? (limit 1000 chars)"
+              placeholder="List Expectations like: tall, slim, athletic"
               v-model="regExp"
               @input="setExp($event.target.value)"
             />
@@ -244,7 +244,7 @@ export default {
       regDescYourself: "",
       regName: localStorage.getItem("user.name"),
       regPhNo: localStorage.getItem("user.phone"),
-      regExp: "",
+      regExp: [],
       regBranch: undefined,
       regYear: undefined,
       regTT: File,
@@ -354,7 +354,7 @@ export default {
       this.$v.regDescYourself.$touch();
     },
     setExp(value) {
-      this.regExp = value;
+      this.regExp = value.split(",");
       this.$v.regExp.$touch();
     },
     setBranch(value) {
@@ -376,7 +376,7 @@ export default {
         this.isSubmitted = true;
         this.$store
           .dispatch("updateDetails", this.axiosFormProfile, {
-            expectations: this.expList
+            expectations: this.regExp
           })
           .then(success => {
             console.log("Profile Updated!");
