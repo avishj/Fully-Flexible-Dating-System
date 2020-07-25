@@ -6,10 +6,28 @@
         class="form-signup column is-10-mobile is-8-tablet is-6-desktop is-offset-1-mobile is-offset-2-tablet is-offset-3-desktop my-6 px-2"
         @submit.prevent="submit"
       >
-        <div class="field is-flex is-horizontal-center">
-          <figure class="image is-128x128">
-            <img class="is-rounded" src="../assets/img/default-profile.jpeg" alt="User Image" />
-          </figure>
+        <div>
+          <div class="field is-flex is-horizontal-center image-upload">
+            <label for="regImg">
+              <figure class="image is-128x128">
+                <img class="is-rounded" src="../assets/img/default-profile.jpeg" alt="User Image" />
+              </figure>
+            </label>
+            <input
+              id="regImg"
+              name="regImg"
+              type="file"
+              @input="setImg($event.target.value)"
+              accept="image/png, image/jpeg"
+              required
+            />
+          </div>
+          <div v-if="$v.regImg.$dirty">
+            <div
+              class="error has-text-centered"
+              v-if="!$v.regImg.required"
+            >Profile Image is required.</div>
+          </div>
         </div>
         <div class="field has-text-centered">
           <span class="is-size-5 has-text-weight-semibold has-text-success">{{ this.regName }}</span>
@@ -204,7 +222,7 @@
               </span>
             </label>
           </div>
-          <!-- <div class="error" v-if="!$v.regTT.required">Time Table is required.</div> -->
+          <div class="error" v-if="!$v.regTT.required">Time Table is required.</div>
           <p class="has-text-grey pt-1by2">
             Not sure how to get your timetable, click&nbsp;
             <router-link class="link-custom-1" to="/timetable">here</router-link>&nbsp;to learn more.
@@ -333,6 +351,9 @@ export default {
     },
     regTT: {
       required
+    },
+    regImg: {
+      required
     }
   },
   computed: {
@@ -365,6 +386,10 @@ export default {
     setTT(value) {
       this.regTT = value;
       this.$v.regTT.$touch();
+    },
+    setImg(value) {
+      this.regImg = value;
+      this.$v.regImg.$touch();
     },
     submit() {
       this.$v.$touch();

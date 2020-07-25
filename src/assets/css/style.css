@@ -287,6 +287,12 @@ a.shadow-custom {
   border-left:0.25rem solid #FE0074;
 }
 
+.image-upload > input {
+  visibility:hidden;
+  width:0;
+  height:0
+}
+
 body {
   -ms-overflow-style: none;  /* Internet Explorer 10+ */
   scrollbar-width: none;  /* Firefox */
