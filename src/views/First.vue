@@ -1,9 +1,28 @@
 <template>
   <div class="app-profile section has-background-black">
     <div class="columns">
+      <div
+        class="column is-10-mobile is-8-tablet is-6-desktop is-offset-1-mobile is-offset-2-tablet is-offset-3-desktop my-6 px-2"
+        :class="(this.welcomeShown)?'is-hidden':''"
+      >
+        <p class="title has-text-primary">Welcome to FFDS!</p>
+        <p class="title has-text-primary">We just need some more details!</p>
+        <br />
+        <button
+          class="button is-medium is-primary btn-submit"
+          @click.prevent="welcome"
+          type="button"
+        >
+          <span>Go Ahead</span>
+          <span class="icon">
+            <i class="fas fa-chevron-right"></i>
+          </span>
+        </button>
+      </div>
       <form
         id="profileForm"
         class="form-signup column is-10-mobile is-8-tablet is-6-desktop is-offset-1-mobile is-offset-2-tablet is-offset-3-desktop my-6 px-2"
+        :class="(this.welcomeShown)?'':'is-hidden'"
         @submit.prevent="submit"
       >
         <div>
@@ -264,6 +283,7 @@ export default {
       regYear: undefined,
       regTT: File,
       isSubmitted: false,
+      welcomeShown: false,
       branchList: [
         "B.Tech - Biotechnology",
         "B.Tech - Chemical Engineering",
@@ -403,6 +423,9 @@ export default {
     setImg(value) {
       this.regImg = value;
       this.$v.regImg.$touch();
+    },
+    welcome() {
+      this.welcomeShown = !this.welcomeShown;
     },
     submit() {
       this.$v.$touch();
