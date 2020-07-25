@@ -17,61 +17,61 @@ const routes = [
     path: "/",
     name: "Home",
     component: loadView("Home"),
-    meta: { requiresAuth: false }
+    meta: { title: "Welcome to FFDS!", requiresAuth: false }
   },
   {
     path: "/login",
     name: "Login",
     component: loadView("Login"),
-    meta: { requiresAuth: false }
+    meta: { title: "Login | FFDS", requiresAuth: false }
   },
   {
     path: "/signup",
     name: "Signup",
     component: loadView("Signup"),
-    meta: { requiresAuth: false }
+    meta: { title: "Register | FFDS", requiresAuth: false }
   },
   {
     path: "/dashboard",
     name: "Dashboard",
     component: loadView("Dashboard"),
-    meta: { requiresAuth: true }
+    meta: { title: "Dashboard | FFDS", requiresAuth: true }
   },
   {
     path: "/profile",
     name: "Profile",
     component: loadView("Profile"),
-    meta: { requiresAuth: true }
+    meta: { title: "Profile | FFDS", requiresAuth: true }
   },
   {
     path: "/timetable",
     name: "Timetable",
     component: loadView("Timetable"),
-    meta: { requiresAuth: false }
+    meta: { title: "Time Table | FFDS", requiresAuth: false }
   },
   {
     path: "/verify",
     name: "Verify",
     component: loadView("Verify"),
-    meta: { requiresAuth: false }
+    meta: { title: "Verify Email | FFDS", requiresAuth: false }
   },
   {
     path: "/resend-verify",
     name: "ResendVerify",
     component: loadView("ResendVerify"),
-    meta: { requiresAuth: false }
+    meta: { title: "Resend Verification Email | FFDS", requiresAuth: false }
   },
   {
     path: "/first",
     name: "First",
     component: loadView("First"),
-    meta: { requiresAuth: true }
+    meta: { title: "First Login | FFDS", requiresAuth: true }
   },
   {
     path: "/404",
     name: "P404",
     component: loadView("P404"),
-    meta: { requiresAuth: false }
+    meta: { title: "404 Not Found | FFDS", requiresAuth: false }
   },
   {
     path: "*",
