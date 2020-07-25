@@ -71,7 +71,7 @@ export default new Vuex.Store({
           });
       });
     },
-    // Fix API Not returning an object
+    // Fix Register 
     register: ({ commit }, params) => {
       return new Promise((resolve, reject) => {
         Axios.request("/user/create", {
@@ -81,13 +81,13 @@ export default new Vuex.Store({
         })
           .then(({ data, status }) => {
             if (
-              status === 201 &&
+              status === 201 ||
               data.message === "Account created successfully"
             ) {
               resolve(true);
               // Fix Register Error Messages
             } else if (
-              status === 201 &&
+              status === 401 ||
               data.message === "User already exists"
             ) {
               reject(new Error("User is already Registered!"), null);
