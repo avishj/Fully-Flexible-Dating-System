@@ -36,6 +36,7 @@ export default new Vuex.Store({
                 JSON.stringify(data.user.gender)
               );
               localStorage.setItem("user.bio", JSON.stringify(data.user.bio));
+              localStorage.setItem("user._id", JSON.stringify(data.user._id));
               localStorage.setItem("user.year", JSON.stringify(data.user.year));
               localStorage.setItem("user.slot", JSON.stringify(data.user.slot));
               // Add User Image
