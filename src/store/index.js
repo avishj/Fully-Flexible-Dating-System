@@ -46,7 +46,7 @@ export default new Vuex.Store({
           })
           .catch(error => {
             if (error.response.status === 400) {
-              reject(new Error("User Not Found!"), null);
+              reject(new Error("Invalid Email / Password!"), null);
             } else if (error.response.status === 401) {
               reject(
                 new Error(
@@ -56,7 +56,10 @@ export default new Vuex.Store({
               );
             } // Fix Invalid Password Status
             else if (error.response.status === 403) {
-              reject(new Error("Invalid Password!"), null);
+              reject(
+                new Error("Unauthorized / Session Expired! Please re-login!"),
+                null
+              );
             } else reject(error);
           });
       });
@@ -142,10 +145,10 @@ export default new Vuex.Store({
           })
           .catch(error => {
             if (error.response.status === 400)
-              reject(new Error("User Not Found!"), null);
+              reject(new Error("Invalid Email / Password!"), null);
             else if (error.response.status === 403)
               reject(
-                new Error("Unauthorized/Session Expired! Please re-login!"),
+                new Error("Unauthorized / Session Expired! Please re-login!"),
                 null
               );
             else reject(error);
