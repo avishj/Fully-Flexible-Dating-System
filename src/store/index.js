@@ -221,7 +221,7 @@ export default new Vuex.Store({
     },
     uploadTimeTable: ({ commit }, payload) => {
       return new Promise((resolve, reject) => {
-        Axios.request("https://free-slot-finder.herokuapp.com/upload" {
+        Axios.request("https://free-slot-finder.herokuapp.com/upload", {
           method: "post",
           data: payload
         })
@@ -256,20 +256,20 @@ export default new Vuex.Store({
             reject(error);
           });
       });
-    },
-    SHOWDETAILS: ({ commit }, payload) => {
-      return new Promise((resolve, reject) => {
-        Axios.post("updateDetails", payload)
-          .then(({ data, status }) => {
-            if (status === 200) {
-              resolve(true);
-            }
-          })
-          .catch(error => {
-            reject(error);
-          });
-      });
     }
+    // SHOWDETAILS: ({ commit }, payload) => {
+    //   return new Promise((resolve, reject) => {
+    //     Axios.post("updateDetails", payload)
+    //       .then(({ data, status }) => {
+    //         if (status === 200) {
+    //           resolve(true);
+    //         }
+    //       })
+    //       .catch(error => {
+    //         reject(error);
+    //       });
+    //   });
+    // }
   },
   modules: {}
 });
