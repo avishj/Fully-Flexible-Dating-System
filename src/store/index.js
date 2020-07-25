@@ -43,9 +43,24 @@ export default new Vuex.Store({
               // localStorage.setItem("user.image", JSON.stringify(data.user.image));
               resolve(true);
               // Fix User Not Found & Invalid Password Text
-            } else if (status === 200 && data.response === "User not found") {
+            } else if (
+              status === 400 &&
+              data.response === "User not registered"
+            ) {
               reject(new Error("User Not Found!"), null);
-            } else if (status === 200 && data.response === "Invalid Password") {
+            } else if (
+              status === 401 &&
+              data.response === "email not verified"
+            ) {
+              reject(
+                new Error(
+                  "Email has not been verified! Please Verify to login!"
+                ),
+                null
+              );
+            }
+            // Fix Invalid Password Status & Message
+            else if (status === 403 && data.response === "invalid password") {
               reject(new Error("Invalid Password!"), null);
             } else {
               reject(new Error(data.response), null);
