@@ -119,16 +119,15 @@ export default new Vuex.Store({
           });
       });
     },
-    updateDetails: ({ commit }, params, data) => {
+    //Fix Expectations body req not being sent.
+    updateDetails: ({ commit }, params, payload) => {
       return new Promise((resolve, reject) => {
-        Axios.request("/user/updateDetails", {
-          method: "post",
+        Axios.post("/user/updateDetails", payload, {
           headers: {
             "Content-Type": "application/json; charset=utf8",
             "Authorization": "JWT " + localStorage.getItem("token")
           },
-          params: params,
-          data: data
+          params: params
         })
           .then(({ data, status }) => {
             console.log(data);
