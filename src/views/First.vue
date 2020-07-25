@@ -364,6 +364,11 @@ export default {
       // Add Email If Required By Backend
       params.append("bio", this.regDescYourself);
       return params;
+    },
+    axiosFormUserImage() {
+      var data = new FormData();
+      data.append("inputFile", this.regImg);
+      return data;
     }
   },
   methods: {
@@ -402,7 +407,19 @@ export default {
           })
           .then(success => {
             console.log("Profile Updated!");
-            this.$router.push("/dashboard");
+            this.$store
+              .dispatch(
+                "addUserImage",
+                this.axiosFormUserImage,
+                "/user/addImage/" + localStorage.getItem("user.email")
+              )
+              .then(success => {
+                console.log("User Image Added");
+                this.$router.push("/dashboard");
+              })
+              .catch(error => {
+                alert(error);
+              });
           })
           .catch(error => {
             alert(error);

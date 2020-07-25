@@ -194,6 +194,23 @@ export default new Vuex.Store({
           });
       });
     },
+    addUserImage: ({ commit }, url, payload) => {
+      return new Promise((resolve, reject) => {
+        Axios.request(url, {
+          method: "post",
+          data: payload
+        })
+          .then(({ data, status }) => {
+            console.log(data);
+            if (status === 201) {
+              resolve(true);
+            }
+          })
+          .catch(error => {
+            reject(error);
+          });
+      });
+    },
     SHOWDETAILS: ({ commit }, payload) => {
       return new Promise((resolve, reject) => {
         Axios.post("updateDetails", payload)
