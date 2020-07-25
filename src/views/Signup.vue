@@ -327,7 +327,7 @@ export default {
       },
       regPwd: {
         required,
-        minLength: minLength(12)
+        minLength: minLength(6)
       },
       regConfPwd: {
         required,
@@ -360,8 +360,6 @@ export default {
       params.append("phone", this.form2.regPhNo);
       return params;
     },
-    // axiosForm2() {
-    // },
     axiosFormSendEmail() {
       const params = new URLSearchParams();
       params.append("mailto", this.form1.regEmail);
