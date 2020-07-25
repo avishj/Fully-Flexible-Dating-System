@@ -118,7 +118,7 @@ export default new Vuex.Store({
             if (error.response.status === 401)
               reject(new Error("Email Not Verified!"), null);
             // Fix User Not Registered Error Handling
-            // else if (error.response.status === )
+            // else if (error.response.status === 400)
             //   reject(new Error("User Not Registered!"), null);
             else reject(error);
           });
@@ -139,25 +139,16 @@ export default new Vuex.Store({
             if (status === 200 && data.message === "Details Updated") {
               resolve(true);
             }
-            //Fix Other Error Messages Handling
-            //  else if (
-            //   status === 200 &&
-            //   data.message === "User not registered"
-            // ) {
-            //   reject(new Error("User Not Registered!"), null);
-            // } else if (
-            //   status === 200 &&
-            //   // Fix Email Not Verified Message
-            //   data.message === "User not registered"
-            // ) {
-            //   reject(new Error("Email Not Verified!"), null);
-            // }
-            else {
-              reject(new Error(data.message), null);
-            }
           })
           .catch(error => {
-            reject(error);
+            if (error.response.status === 400)
+              reject(new Error("User Not Found!"), null);
+            else if (error.response.status === 403)
+              reject(
+                new Error("Unauthorized/Session Expired! Please re-login!"),
+                null
+              );
+            else reject(error);
           });
       });
     },
