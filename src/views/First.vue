@@ -12,12 +12,9 @@
           </figure>
         </div>
         <div class="field has-text-centered">
-          <!-- Fix Name & Phone Number -->
-          <!-- <span
-        class="is-size-5 has-text-weight-semibold has-text-success user-name"
-      >{{ this.regName }}</span>
-      <br />
-          <span class="user-phone-number has-text-weight-medium">{{ this.regPhNo }}</span>-->
+          <span class="is-size-5 has-text-weight-semibold has-text-success">{{ this.regName }}</span>
+          <br />
+          <span class="has-text-weight-medium">{{ this.regPhNo }}</span>
         </div>
         <div class="field">
           <label for="regDescYourself" class="label has-text-primary">Describe Yourself</label>
