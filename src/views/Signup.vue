@@ -49,7 +49,7 @@
               <div
                 class="error"
                 v-if="!$v.form1.regPwd.minLength"
-              >Password has to be atleast 12 characters.</div>
+              >Password has to be atleast 6 characters.</div>
             </div>
             <span class="icon is-small is-left">
               <i class="fas fa-key fa-custom"></i>

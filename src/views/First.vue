@@ -343,8 +343,6 @@ export default {
       params.append("year", this.regYear);
       // Add Email If Required By Backend
       params.append("bio", this.regDescYourself);
-      // Fix Expectation Not Taken By API
-      // params.append("expectations", this.regExp);
       return params;
     }
   },
@@ -375,7 +373,7 @@ export default {
         console.log("Profile Form is being Submitted!");
         this.isSubmitted = true;
         this.$store
-          .dispatch("updateDetails", this.axiosFormProfile)
+          .dispatch("updateDetails", this.axiosFormProfile, {expectations: this.expList})
           .then(success => {
             console.log("Profile Updated!");
             this.$router.push("/dashboard");

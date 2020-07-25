@@ -105,9 +105,9 @@ export default new Vuex.Store({
             ) {
               reject(new Error("User Not Registered!"), null);
             } else if (
-              status === 200 &&
+              status === 401 &&
               // Fix Email Not Verified Message
-              data.message === "User not registered"
+              data.message === "Email not verified"
             ) {
               reject(new Error("Email Not Verified!"), null);
             } else {
@@ -119,7 +119,7 @@ export default new Vuex.Store({
           });
       });
     },
-    updateDetails: ({ commit }, params) => {
+    updateDetails: ({ commit }, params, data) => {
       return new Promise((resolve, reject) => {
         Axios.request("/user/updateDetails", {
           method: "post",
@@ -127,7 +127,8 @@ export default new Vuex.Store({
             "Content-Type": "application/json; charset=utf8",
             "Authorization": "JWT " + localStorage.getItem("token")
           },
-          params: params
+          params: params,
+          data: data
         })
           .then(({ data, status }) => {
             console.log(data);
