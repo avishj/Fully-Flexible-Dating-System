@@ -18,6 +18,28 @@ export default new Vuex.Store({
           .then(({ data, status }) => {
             if (status === 200 && data.token) {
               localStorage.setItem("token", JSON.stringify(data.token));
+              localStorage.setItem("user.name", JSON.stringify(data.user.name));
+              localStorage.setItem(
+                "user.phone",
+                JSON.stringify(data.user.phone)
+              );
+              localStorage.setItem(
+                "user.branch",
+                JSON.stringify(data.user.branch)
+              );
+              localStorage.setItem(
+                "user.firstLogin",
+                JSON.stringify(data.user.firstLogin)
+              );
+              localStorage.setItem(
+                "user.gender",
+                JSON.stringify(data.user.gender)
+              );
+              localStorage.setItem("user.bio", JSON.stringify(data.user.bio));
+              localStorage.setItem("user.year", JSON.stringify(data.user.year));
+              localStorage.setItem("user.slot", JSON.stringify(data.user.slot));
+              // Add User Image
+              // localStorage.setItem("user.image", JSON.stringify(data.user.image));
               resolve(true);
               // Fix User Not Found & Invalid Password Text
             } else if (status === 200 && data.response === "User not found") {
@@ -125,7 +147,7 @@ export default new Vuex.Store({
         Axios.post("/user/updateDetails", payload, {
           headers: {
             "Content-Type": "application/json; charset=utf8",
-            "Authorization": "JWT " + localStorage.getItem("token")
+            Authorization: "JWT " + localStorage.getItem("token")
           },
           params: params
         })
