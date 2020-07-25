@@ -193,6 +193,23 @@ export default new Vuex.Store({
           });
       });
     },
+    getSlotType: ({ commit }) => {
+      return new Promise((resolve, reject) => {
+        Axios.get("https://free-slot-finder.herokuapp.com/slotType/" + localStorage.getItem("fsf._id"))
+          .then(({ data, status }) => {
+            console.log(data);
+            if (status === 200) {
+              localStorage.setItem("fsf.morningFreeCount", JSON.stringify(data.result.morningFreeCount));
+              localStorage.setItem("fsf.eveningFreeCount", JSON.stringify(data.result.eveningFreeCount));
+              localStorage.setItem("fsf.slotType", JSON.stringify(data.result.slotType));
+              resolve(true);
+            }
+          })
+          .catch(error => {
+            reject(error);
+          });
+      });
+    },
     SHOWDETAILS: ({ commit }, payload) => {
       return new Promise((resolve, reject) => {
         Axios.post("updateDetails", payload)
