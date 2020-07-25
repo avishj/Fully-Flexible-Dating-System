@@ -39,6 +39,7 @@ export default new Vuex.Store({
               localStorage.setItem("user._id", JSON.stringify(data.user._id));
               localStorage.setItem("user.year", JSON.stringify(data.user.year));
               localStorage.setItem("user.slot", JSON.stringify(data.user.slot));
+              localStorage.setItem("user.email", JSON.stringify(data.user.email));
               // Add User Image
               // localStorage.setItem("user.image", JSON.stringify(data.user.image));
               resolve(true);
@@ -139,13 +140,59 @@ export default new Vuex.Store({
         })
           .then(({ data, status }) => {
             console.log(data);
-            if (status === 200 && data.message === "Details Updated") {
+            if (status === 200) {
               resolve(true);
             }
           })
           .catch(error => {
             if (error.response.status === 400)
-              reject(new Error("Invalid Email / Password!"), null);
+              reject(new Error("User Not Found!"), null);
+            else if (error.response.status === 403)
+              reject(
+                new Error("Unauthorized / Session Expired! Please re-login!"),
+                null
+              );
+            else reject(error);
+          });
+      });
+    },
+    profileView: ({ commit }, params) => {
+      return new Promise((resolve, reject) => {
+        Axios.post("/user/profileView", null, {
+          headers: {
+            "Content-Type": "application/json; charset=utf8",
+            Authorization: "JWT " + localStorage.getItem("token")
+          },
+          params: params
+        })
+          .then(({ data, status }) => {
+            console.log(data);
+            if (status === 200) {
+              localStorage.setItem("user.verified", JSON.stringify(data.user.verified));
+              localStorage.setItem("user.name", JSON.stringify(data.user.name));
+              localStorage.setItem("user.email", JSON.stringify(data.user.email));
+              localStorage.setItem(
+                "user.phone",
+                JSON.stringify(data.user.phone)
+              );
+              localStorage.setItem(
+                "user.branch",
+                JSON.stringify(data.user.branch)
+              );
+              localStorage.setItem(
+                "user.gender",
+                JSON.stringify(data.user.gender)
+              );
+              localStorage.setItem("user.bio", JSON.stringify(data.user.bio));
+              localStorage.setItem("user._id", JSON.stringify(data.user._id));
+              localStorage.setItem("user.year", JSON.stringify(data.user.year));
+              localStorage.setItem("user.slot", JSON.stringify(data.user.slot));
+              resolve(true);
+            }
+          })
+          .catch(error => {
+            if (error.response.status === 400)
+              reject(new Error("User Not Found!"), null);
             else if (error.response.status === 403)
               reject(
                 new Error("Unauthorized / Session Expired! Please re-login!"),
