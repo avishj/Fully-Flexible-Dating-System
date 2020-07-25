@@ -15,9 +15,9 @@
           <!-- Fix Name & Phone Number -->
           <!-- <span
         class="is-size-5 has-text-weight-semibold has-text-success user-name"
-      >{{ this.form2.regName }}</span>
+      >{{ this.regName }}</span>
       <br />
-          <span class="user-phone-number has-text-weight-medium">{{ this.form2.regPhNo }}</span>-->
+          <span class="user-phone-number has-text-weight-medium">{{ this.regPhNo }}</span>-->
         </div>
         <div class="field">
           <label for="regDescYourself" class="label has-text-primary">Describe Yourself</label>
@@ -242,6 +242,8 @@ export default {
   data() {
     return {
       regDescYourself: "",
+      regName: localStorage.getItem("user.name"),
+      regPhNo: localStorage.getItem("user.phone"),
       regExp: "",
       regBranch: undefined,
       regYear: undefined,
@@ -373,7 +375,9 @@ export default {
         console.log("Profile Form is being Submitted!");
         this.isSubmitted = true;
         this.$store
-          .dispatch("updateDetails", this.axiosFormProfile, {expectations: this.expList})
+          .dispatch("updateDetails", this.axiosFormProfile, {
+            expectations: this.expList
+          })
           .then(success => {
             console.log("Profile Updated!");
             this.$router.push("/dashboard");
