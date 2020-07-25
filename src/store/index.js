@@ -155,7 +155,7 @@ export default new Vuex.Store({
           });
       });
     },
-    addUserImage: ({ commit }, url, payload) => {
+    addUserImage: ({ commit }, payload, url) => {
       return new Promise((resolve, reject) => {
         Axios.request(url, {
           method: "post",
@@ -164,6 +164,27 @@ export default new Vuex.Store({
           .then(({ data, status }) => {
             console.log(data);
             if (status === 201) {
+              resolve(true);
+            }
+          })
+          .catch(error => {
+            reject(error);
+          });
+      });
+    },
+    uploadTimeTable: ({ commit }, payload) => {
+      return new Promise((resolve, reject) => {
+        Axios.request("https://free-slot-finder.herokuapp.com/upload" {
+          method: "post",
+          data: payload
+        })
+          .then(({ data, status }) => {
+            console.log(data);
+            if (status === 201) {
+              localStorage.setItem("fsf._id", JSON.stringify(data.result._id));
+              localStorage.setItem("fsf.name", JSON.stringify(data.result.name));
+              localStorage.setItem("fsf.semester", JSON.stringify(data.result.semester));
+              localStorage.setItem("fsf.timetable", JSON.stringify(data.result.timetable));
               resolve(true);
             }
           })
