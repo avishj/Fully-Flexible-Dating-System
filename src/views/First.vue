@@ -414,7 +414,7 @@ export default {
                 "/user/addImage/" + localStorage.getItem("user.email")
               )
               .then(success => {
-                console.log("User Image Added");
+                console.log("User Image Added!");
                 this.$router.push("/dashboard");
               })
               .catch(error => {

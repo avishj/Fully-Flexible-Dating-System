@@ -39,7 +39,7 @@
               name="regPwd"
               class="input has-background-black"
               type="password"
-              placeholder="Create a password (min. 12 chars)"
+              placeholder="Create a password (min. 6 chars)"
               autocomplete="new-password"
               v-model="form1.regPwd"
               @input="setPwd($event.target.value)"
