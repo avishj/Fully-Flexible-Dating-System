@@ -110,25 +110,17 @@ export default new Vuex.Store({
         })
           .then(({ data, status }) => {
             console.log(data);
-            if (status === 200 && data.message === "email is verified") {
+            if (status === 200) {
               resolve(true);
-            } else if (
-              status === 200 &&
-              data.message === "User not registered"
-            ) {
-              reject(new Error("User Not Registered!"), null);
-            } else if (
-              status === 401 &&
-              // Fix Email Not Verified Message
-              data.message === "Email not verified"
-            ) {
-              reject(new Error("Email Not Verified!"), null);
-            } else {
-              reject(new Error(data.message), null);
             }
           })
           .catch(error => {
-            reject(error);
+            if (error.response.status === 401)
+              reject(new Error("Email Not Verified!"), null);
+            // Fix User Not Registered Error Handling
+            // else if (error.response.status === )
+            //   reject(new Error("User Not Registered!"), null);
+            else reject(error);
           });
       });
     },
