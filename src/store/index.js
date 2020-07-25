@@ -92,16 +92,8 @@ export default new Vuex.Store({
         })
           .then(({ data, status }) => {
             console.log(data);
-            if (status === 200 && data === "sent") {
+            if (status === 200) {
               resolve(true);
-            } else if (
-              status === 200 &&
-              // Fix Email Not Sent Message
-              data === "User not registered"
-            ) {
-              reject(new Error("Email Could Not Be Sent!"), null);
-            } else {
-              reject(new Error(data), null);
             }
           })
           .catch(error => {
