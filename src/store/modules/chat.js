@@ -58,11 +58,13 @@ export default {
           });
       });
     },
-    addChat: ({ commit }, payload) => {
+    getFeed: ({ commit }) => {
       return new Promise((resolve, reject) => {
-        Axios.request("/add/new/chat", {
-          method: "post",
-          data: payload
+        Axios.request("/user/showfeed", {
+          method: "get",
+          headers: {
+            Authorization: "JWT " + localStorage.getItem("token")
+          }
         })
           .then(({ data, status }) => {
             console.log(data);

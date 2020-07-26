@@ -216,6 +216,9 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         Axios.request(url, {
           method: "post",
+          headers: {
+            Authorization: "JWT " + localStorage.getItem("token")
+          },
           data: payload
         })
           .then(({ data, status }) => {
