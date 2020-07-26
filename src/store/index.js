@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import Axios from "../store/http.js";
+import Chat from "./modules/chat.js";
 
 Vue.use(Vuex);
 
@@ -301,5 +302,7 @@ export default new Vuex.Store({
     //   });
     // }
   },
-  modules: {}
+  modules: {
+    chat: Chat
+  }
 });
