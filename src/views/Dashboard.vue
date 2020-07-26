@@ -28,7 +28,10 @@
     </div>-->
 
     <div class="columns">
-      <div class="column is-12-mobile is-5-tablet is-4-desktop pt-4 pr-0">
+      <div
+        class="column is-12-mobile is-5-tablet is-4-desktop pt-4 pr-0"
+        :class="(isFocused)?'is-hidden-mobile':''"
+      >
         <section class="has-background-primary is-flex is-horizontal-center">
           <div class="p-1 flex-center">
             <figure class="image is-64x64">
@@ -105,13 +108,21 @@
         </div>
       </div>
       <!-- <overlay-scrollbars :options="osComponentOptions" style="max-height: 70vh;"> -->
-      <div class="column is-hidden-mobile is-7-tablet is-8-desktop pt-4 pl-0">
+      <div
+        class="column is-7-tablet is-8-desktop pt-4 pl-0"
+        :class="(isFocused)?'':'is-hidden-mobile'"
+      >
         <div @click="setEmojiPickerToggle(false)" :key="chatKey">
           <section class="window is-marginless is-paddingless">
             <!-- <header class="window__header__container">
               <slot name="header has-text-centered">{{ title }}</slot>
             </header>-->
             <section class="has-background-primary is-flex is-vertical-center">
+              <div class="p-1 flex-center" :class="(isFocused)?'is-hidden-tablet':''">
+                <span class="icon cursor-pointer" @click="unfocusChat">
+                  <i class="fas fa-arrow-left fa-lg"></i>
+                </span>
+              </div>
               <div class="p-1 flex-center">
                 <figure class="image is-64x64">
                   <img class="is-rounded" src="../assets/img/default-profile.jpeg" alt="User Image" />
@@ -124,7 +135,7 @@
                 <messages-list :feed="feed" :author-id="authorId" class="messages-list" />
               </slot>
             </section>
-            <div class="window__input__container">
+            <div class="window__input__container p-1">
               <slot name="input-container">
                 <input-container
                   :toggle-emoji-picker="toggleEmojiPicker"
@@ -168,7 +179,7 @@ export default {
     },
     attachMock: {
       type: Boolean,
-      default: true,
+      default: false,
       required: false
     },
     initialFeed: {
@@ -176,31 +187,31 @@ export default {
       default: function() {
         return [
           {
-            id: 1,
-            author: "Ayush",
+            id: 0,
+            author: "Me",
             imageUrl: "@assets/img/default-profile.jpeg",
             contents: "hey",
-            date: "16:27:05"
-          },
-          {
-            id: 0,
-            author: "Me",
-            imageUrl: "@assets/img/default-profile.jpeg",
-            contents: "hello",
-            date: "16:28:09"
-          },
-          {
-            id: 0,
-            author: "Me",
-            imageUrl: "@assets/img/default-profile.jpeg",
-            contents: "what's up?",
-            date: "16:28:13"
+            date: "26/07/20 16:27:05"
           },
           {
             id: 1,
             author: "Ayush",
+            imageUrl: "@assets/img/default-profile.jpeg",
+            contents: "hello",
+            date: "26/07/20 16:28:09"
+          },
+          {
+            id: 1,
+            author: "Ayush",
+            imageUrl: "@assets/img/default-profile.jpeg",
+            contents: "what's up?",
+            date: "26/07/20 16:28:13"
+          },
+          {
+            id: 0,
+            author: "Me",
             contents: "nothing, wbu?",
-            date: "16:28:49"
+            date: "26/07/20 16:28:49"
           }
         ];
       },
@@ -220,7 +231,7 @@ export default {
       authorId: 0,
       toggleEmojiPicker: false,
       chatKey: 0,
-      focusedOnChat: false,
+      isFocused: false,
       osComponentOptions: {
         resize: "none",
         paddingAbsolute: true,
@@ -268,7 +279,7 @@ export default {
         contents: message,
         image: image,
         imageUrl: imageUrl,
-        date: moment().format("HH:mm:ss")
+        date: moment().format("DD MM YY HH:mm:ss")
       };
 
       this.pushToFeed(newOwnMessage);
@@ -281,11 +292,10 @@ export default {
       this.setEmojiPickerToggle(toggle);
     },
     focusChat() {
-      this.focusedOnChat = true;
-      this.chatKey += 1;
+      this.isFocused = true;
     },
-    goBack() {
-      this.focusedOnChat = false;
+    unfocusChat() {
+      this.isFocused = false;
     }
   }
 };
