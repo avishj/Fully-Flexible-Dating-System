@@ -76,6 +76,6 @@ export default {
             reject(error);
           });
       });
-    },
+    }
   }
 }
