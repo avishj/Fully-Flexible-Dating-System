@@ -1,6 +1,6 @@
 <template>
   <div class="app-dashboard section is-marginless is-paddingless has-background-black">
-    <div
+    <!-- <div
       :class="focusedOnChat ? 'is-hidden' : ''"
       class="is-size-2 has-text-weight-semibold has-text-white has-background-primary pt-4 pl-2 is-left"
     >Chats:</div>
@@ -25,10 +25,18 @@
           >$user.foreign.current_focus.</span>
         </div>
       </div>
-    </div>
+    </div>-->
 
     <div class="columns">
-      <div class="column is-12-mobile is-5-tablet is-4-desktop pr-0">
+      <div class="column is-12-mobile is-5-tablet is-4-desktop pt-4 pr-0">
+        <section class="has-background-primary is-flex is-horizontal-center">
+          <div class="p-1 flex-center">
+            <figure class="image is-64x64">
+              <img class="is-rounded" src="../assets/img/default-profile.jpeg" alt="User Image" />
+            </figure>
+          </div>
+          <div class="p-1 is-size-3 flex-center" style="vertical-align: middle">user.name</div>
+        </section>
         <div class="card has-background-black custom-card" @click="focusChat">
           <div class="card-content">
             <article class="media">
@@ -97,12 +105,20 @@
         </div>
       </div>
       <!-- <overlay-scrollbars :options="osComponentOptions" style="max-height: 70vh;"> -->
-      <div class="column is-hidden-mobile is-7-tablet is-8-desktop pl-0">
+      <div class="column is-hidden-mobile is-7-tablet is-8-desktop pt-4 pl-0">
         <div @click="setEmojiPickerToggle(false)" :key="chatKey">
           <section class="window is-marginless is-paddingless">
             <!-- <header class="window__header__container">
               <slot name="header has-text-centered">{{ title }}</slot>
             </header>-->
+            <section class="has-background-primary is-flex is-vertical-center">
+              <div class="p-1 flex-center">
+                <figure class="image is-64x64">
+                  <img class="is-rounded" src="../assets/img/default-profile.jpeg" alt="User Image" />
+                </figure>
+              </div>
+              <div class="p-1 is-size-3 flex-center">user.currentFocus.name</div>
+            </section>
             <section id="window__messages__container" class="window__messages__container">
               <slot>
                 <messages-list :feed="feed" :author-id="authorId" class="messages-list" />
