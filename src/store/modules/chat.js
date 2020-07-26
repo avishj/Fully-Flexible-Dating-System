@@ -24,10 +24,10 @@ export default {
     },
     getAllChats: ({ commit }) => {
       return new Promise((resolve, reject) => {
-        Axios.request("/add/new/chat", {
+        Axios.request("/get/all/chats", {
           method: "get",
           params: {
-            "email": localStorage.getItem("user.email");
+            "email": localStorage.getItem("user.email")
           }
         })
           .then(({ data, status }) => {
@@ -41,11 +41,11 @@ export default {
           });
       });
     },
-    addChat: ({ commit }, payload) => {
+    getSpecificChat: ({ commit }, params) => {
       return new Promise((resolve, reject) => {
-        Axios.request("/add/new/chat", {
-          method: "post",
-          data: payload
+        Axios.request("/get/specific/chat", {
+          method: "get",
+          params: params
         })
           .then(({ data, status }) => {
             console.log(data);
