@@ -27,7 +27,7 @@
     "eslint-plugin-vue": "^6.2.2",
     "jquery": "^3.5.1",
     "jquery-validation": "^1.19.2",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "nprogress": "^0.2.0",
     "overlayscrollbars": "^1.12.0",
     "overlayscrollbars-vue": "^0.2.2",
